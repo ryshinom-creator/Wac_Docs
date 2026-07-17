@@ -1,0 +1,14 @@
+{
+  "name": "Gerador de Documentação — WAC Engenharia",
+  "short_name": "WAC Docs",
+  "description": "Gerador de documentação técnica no padrão AFD, com prévia A4 e assistente IA. Desenvolvido por Victor Reis — WAC Engenharia.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#EFEDEA",
+  "theme_color": "#5E1A1A",
+  "icons": [
+    { "src": "icones/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icones/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
