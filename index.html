@@ -665,6 +665,15 @@
   .pagina.prop .pg-corpo ul.sub li{margin-bottom:4px}
   .pagina.prop .pg-corpo ul li::before{content:"\2013\00a0\00a0"}
   .pagina.prop .pg-corpo ul.sub{margin-left:42px;font-size:.91em}
+
+  /* bloco de assinatura */
+  .assina{margin:26px 0 14px;text-align:center;page-break-inside:avoid}
+  .assina .linha{border-top:1px solid #333;width:58%;margin:0 auto 5px}
+  .assina .nome{font-weight:700;font-size:.95em}
+  .assina .cargo{font-size:.88em;color:#444}
+  /* título que atravessa a tabela */
+  .doc-tabela .tab-titulo-geral{background:#E4EDF7!important;text-align:center;font-weight:700}
+  .doc-tabela tr.zebra td{background:#F7F5F2}
   .pagina.prop .pg-corpo ul.sub li::before{content:"\25c7\00a0\00a0"}
 
   /* carta de apresentação */
@@ -739,6 +748,125 @@
     .fig.sel,.fig:hover{outline:none!important}
     .marcador-orfao{display:none!important}
   }
+
+  /* ==================================================================
+     PADRÃO CHECKLIST DE ASSISTÊNCIA TÉCNICA
+     ================================================================== */
+  body[data-padrao="checklist"] #card-proposta,
+  body[data-padrao="checklist"] #card-elaborado,
+  body[data-padrao="checklist"] #card-aprovado{display:none}
+  body:not([data-padrao="checklist"]) #card-checklist{display:none}
+
+  .pagina.ck .pg-cab-ck{position:absolute;top:26px;left:88px;right:88px;
+    display:flex;justify-content:space-between;align-items:flex-start;z-index:1}
+  .pagina.ck .pg-cab-ck img{height:26px}
+  .pagina.ck .pg-cab-ck .dir{text-align:right;font-size:8.5px;font-weight:700;line-height:1.35}
+  .pagina.ck .pg-rod-ck{position:absolute;left:0;right:0;bottom:0;height:94px;background:#741012;
+    color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 88px;z-index:1;
+    font-size:10px;line-height:1.45}
+  .pagina.ck .pg-rod-ck .meio{text-align:center}
+  .pagina.ck .pg-rod-ck b{font-weight:700}
+  .pagina.ck .pg-corpo{top:100px;left:88px;right:88px;bottom:112px}
+  .pagina.ck .pg-corpo h3{font-size:1.16em;font-weight:700;padding:14px 0 9px}
+  .pagina.ck .pg-corpo h4{font-size:1em;font-weight:700;padding:12px 0 7px}
+  .pagina.ck .pg-corpo p{text-indent:0;text-align:left;padding-bottom:5px}
+
+  /* capa do checklist */
+  .pg-capa-ck{position:relative;z-index:1;height:100%;padding:88px 88px 120px;box-sizing:border-box;
+    display:flex;flex-direction:column;align-items:center;text-align:center}
+  .pg-capa-ck .risco{width:30%;height:3px;background:#741012;margin:0 auto}
+  .pg-capa-ck .tit{font-size:25px;font-weight:800;line-height:1.25;margin:16px 0 8px}
+  .pg-capa-ck .rev{font-size:13.5px;font-weight:700;color:#741012;margin-bottom:14px}
+  .pg-capa-ck .painel{margin-top:44px;width:88%;border-collapse:collapse;font-size:12px}
+  .pg-capa-ck .painel td{border:1px solid #333;padding:4px 8px;text-align:left}
+  .pg-capa-ck .painel .cab{background:#741012;color:#fff;font-weight:700;padding:5px 8px}
+  .pg-capa-ck .painel .rot{font-weight:700;width:33%}
+  .pg-capa-ck .placar{margin-top:32px;width:80%;border-collapse:collapse;font-size:12px}
+  .pg-capa-ck .placar .tit2{background:#650B10;color:#fff;text-align:center;font-weight:700;padding:3px;font-size:11px}
+  .pg-capa-ck .placar td{border:1px solid #333;text-align:center;padding:4px}
+  .pg-capa-ck .placar .rot{background:#D9D9D9;font-weight:700}
+  .pg-capa-ck .placar .num{font-size:19px;font-weight:800}
+
+  /* fotos dos anexos: todas do mesmo tamanho quando padronizadas */
+  .ck-anexos img.uniforme{width:100%;height:96px;object-fit:cover}
+
+  /* itens de verificação na prévia */
+  .ck-item{display:grid;grid-template-columns:1fr 88px 88px 88px;align-items:baseline;
+    padding:3.5px 0;font-size:1em}
+  .ck-item .cx{text-align:center;white-space:nowrap}
+  .ck-obs{border:1px solid #333;margin:10px 0;font-size:.97em}
+  .ck-obs .cab{border-bottom:1px solid #333;padding:4px 7px;font-weight:700}
+  .ck-obs .lin{border-bottom:1px solid #333;padding:4px 7px;min-height:15px}
+  .ck-obs .lin:last-child{border-bottom:none}
+  .ck-leg{margin:12px auto;width:88%;border-collapse:collapse;font-size:.86em}
+  .ck-leg .tit{background:#650B10;color:#fff;text-align:center;font-weight:700;padding:2px}
+  .ck-leg td{border:1px solid #333;background:#D9D9D9;text-align:center;font-weight:700;padding:3px}
+  .ck-anexos{width:100%;border-collapse:collapse;margin:8px 0}
+  .ck-anexos td{border:1px solid #333;width:50%;vertical-align:top;padding:7px;height:150px;text-align:center}
+  .ck-anexos .rot{text-align:left;font-size:.9em;margin-bottom:4px}
+  .ck-anexos img{max-width:74%;max-height:96px;object-fit:contain}
+  .ck-anexos .leg{font-weight:700;font-size:.9em;margin-top:4px}
+  .ck-assina{margin-top:34px}
+  .ck-assina .linha{border-top:1px solid #333;margin-bottom:4px}
+  .ck-assina .rot{text-align:center;font-size:.95em;margin-bottom:44px}
+
+  /* editor do checklist */
+  .ck-grupo{border:1px solid var(--linha);border-radius:8px;padding:11px 13px;margin-bottom:11px;background:#fff}
+  .ck-grupo-top{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+  .ck-grupo-top input.nome{flex:1;font-weight:700;font-size:14px;padding:6px 9px;
+    border:1.5px solid #C9B79A;border-radius:5px;background:#FFFDF7}
+  .ck-lista{display:flex;flex-direction:column;gap:4px}
+  .ck-linha{display:grid;grid-template-columns:1fr 150px 30px;gap:7px;align-items:center}
+  .ck-linha input.it{padding:5px 8px;border:1px solid var(--linha);border-radius:4px;font:inherit;font-size:13px}
+  .ck-radios{display:flex;gap:3px}
+  .ck-radios button{flex:1;border:1px solid var(--linha);background:#fff;border-radius:4px;
+    font:inherit;font-size:11px;font-weight:700;padding:4px 0;cursor:pointer;color:var(--grafite)}
+  .ck-radios button.on[data-v="C"]{background:#2E7D32;border-color:#2E7D32;color:#fff}
+  .ck-radios button.on[data-v="NC"]{background:#C62828;border-color:#C62828;color:#fff}
+  .ck-radios button.on[data-v="NA"]{background:#78909C;border-color:#78909C;color:#fff}
+  .ck-resumo{background:#FFF4DC;border:1px solid #EDCF92;border-radius:7px;padding:9px 12px;
+    font-size:12.5px;color:#7A5A00;margin-bottom:11px}
+  .ck-resumo b{color:#8A6300}
+
+  /* ---------- importar de um PDF ---------- */
+  .imp-fundo{position:fixed;inset:0;background:rgba(30,24,22,.55);z-index:9600;
+    display:flex;align-items:center;justify-content:center;padding:24px}
+  .imp-cx{background:#fff;border-radius:11px;max-width:640px;width:100%;
+    max-height:84vh;display:flex;flex-direction:column;box-shadow:0 18px 50px rgba(0,0,0,.3)}
+  .imp-top{padding:18px 22px 12px;border-bottom:1px solid var(--linha)}
+  .imp-top h4{font-size:15px;color:var(--marrom)}
+  .imp-top .sub{font-size:12.5px;color:var(--grafite);margin-top:4px;line-height:1.5}
+  .imp-corpo{padding:16px 22px;overflow:auto;flex:1}
+  .imp-solta{border:2px dashed var(--linha);border-radius:9px;padding:26px 18px;
+    text-align:center;color:var(--grafite);font-size:13.5px;cursor:pointer;transition:all .15s}
+  .imp-solta:hover,.imp-solta.sobre{border-color:var(--marrom);background:#FCF8F5;color:var(--marrom)}
+  .imp-op{display:flex;align-items:flex-start;gap:9px;font-size:13px;padding:7px 0;line-height:1.45}
+  .imp-op input{margin-top:2px}
+  .imp-op small{display:block;color:#9A8F86;font-size:11.5px}
+  .imp-acoes{display:flex;gap:9px;justify-content:flex-end;padding:13px 22px;border-top:1px solid var(--linha)}
+  .imp-acoes .btn{width:auto;padding:9px 15px;font-size:13.5px}
+  .imp-log{font-size:12.5px;line-height:1.8;color:var(--grafite);max-height:230px;overflow:auto}
+  .imp-log .ok::before{content:"✅ "} .imp-log .err::before{content:"❌ "}
+  .imp-log .run::before{content:"⏳ "}
+  .imp-previa{border:1px solid var(--linha);border-radius:7px;padding:10px 12px;
+    font-size:12.5px;line-height:1.7;max-height:220px;overflow:auto;background:#FCFBFA}
+  .imp-previa b{color:var(--marrom)}
+
+  /* ---------- editor de tabela ---------- */
+  .tab-ferramentas{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:7px}
+  .tab-ferramentas .sep{width:1px;height:20px;background:var(--linha);margin:0 3px}
+  .excel-table-grid{border-collapse:separate;border-spacing:0}
+  .excel-table-grid td{position:relative;padding:0}
+  .excel-table-grid .cell-input{width:100%;box-sizing:border-box}
+  /* faixa com os botões de cada coluna e de cada linha */
+  .tab-cols,.tab-rows-wrap{display:flex;gap:2px}
+  .tab-mini{border:1px solid var(--linha);background:#fff;color:var(--grafite);
+    border-radius:4px;font:inherit;font-size:10.5px;line-height:1;padding:3px 5px;cursor:pointer}
+  .tab-mini:hover{background:var(--marrom);color:#fff;border-color:var(--marrom)}
+  .tab-mini.rem:hover{background:#A33;border-color:#A33}
+  .celula-cab .cell-input{background:#F3EFE9;font-weight:700}
+  .celula-titulo .cell-input{background:#EAF2FB;font-weight:700;text-align:center;color:#123A63}
+  .tab-legenda-inline{font-size:11.5px;color:var(--grafite);margin-left:4px}
 
   /* ---------- menu Documento (barra superior) ---------- */
   .menu-doc{position:relative;display:inline-block}
@@ -931,6 +1059,10 @@
       <button type="button" onclick="doMenu(gerarSaida)">
         <span class="ic">⬇</span><span>Arquivo para o MiKTeX
         <small>.tex/.zip — melhor acabamento no LaTeX</small></span></button>
+      <hr>
+      <button type="button" onclick="doMenu(abrirImportarPDF)">
+        <span class="ic">📥</span><span>Importar de um PDF
+        <small>lê um documento pronto e monta os capítulos</small></span></button>
     </div>
   </div>
 
@@ -1091,6 +1223,7 @@
         <select id="padrao" onchange="aplicarPadrao()">
           <option value="afd">AFD / técnico — Análise Funcional, manual, memorial…</option>
           <option value="proposta">Proposta Técnica — comercial (capa do cliente, carta, índice)</option>
+          <option value="checklist">Checklist de Assistência Técnica — visita e conformidade</option>
         </select></div>
       <div class="grid3">
         <div class="campo"><label for="codigo"><span id="lbl-codigo">Código do projeto</span></label><input type="text" id="codigo" placeholder="FA0000" value="FA0000"></div>
@@ -1246,6 +1379,79 @@ E-mail: falcare@falcare.com.br</textarea></div>
           <input type="text" id="p_assin" placeholder="Nome do responsável"></div>
         <div class="campo"><label for="p_cargo">Cargo do assinante</label>
           <input type="text" id="p_cargo" placeholder="Gerente de operações"></div>
+      </div>
+    </section>
+
+    <section class="card" id="card-checklist">
+      <h2 onclick="alternarCard(this)"><span class="seta">▼</span>
+        <span>5 · Checklist de Assistência Técnica</span><span class="resumo"></span></h2>
+
+      <div class="ck-resumo" id="ck-resumo">Marque cada item e o resumo aparece aqui.</div>
+
+      <div class="grid2">
+        <div class="campo"><label for="ck_capitulo">Título do capítulo <small>(cabeçalho)</small></label>
+          <input type="text" id="ck_capitulo" value="Capítulo 6 – Checklist – Assistência Técnica"></div>
+        <div class="campo"><label for="ck_revisao">Qual revisão <small>(1ª, 2ª…)</small></label>
+          <input type="text" id="ck_revisao" value="1ª revisão"></div>
+      </div>
+
+      <h2 style="margin-top:16px;cursor:default"><span>5.1 · Dados da instalação</span></h2>
+      <div class="grid2">
+        <div class="campo"><label for="ck_fa">FA</label><input type="text" id="ck_fa" placeholder="1932"></div>
+        <div class="campo"><label for="ck_fadesc">Descrição da FA</label><input type="text" id="ck_fadesc" placeholder="Reforma do Sludge"></div>
+      </div>
+      <div class="grid2">
+        <div class="campo"><label for="ck_equip">Equipamento</label><input type="text" id="ck_equip" placeholder="Tanques de borra e agregados"></div>
+        <div class="campo"><label for="ck_comiss">Data do comissionamento</label><input type="text" id="ck_comiss" placeholder="dd-mm-aaaa"></div>
+      </div>
+      <div class="grid2">
+        <div class="campo"><label for="ck_tipo">Tipo de equipamento</label><input type="text" id="ck_tipo" placeholder="Tanques de armazenamento de água e bombas"></div>
+        <div class="campo"><label for="ck_funcao">Função</label><input type="text" id="ck_funcao" placeholder="Regeneração da água das cabines de pintura"></div>
+      </div>
+      <div class="campo"><label for="ck_localinst">Local de instalação</label>
+        <input type="text" id="ck_localinst" placeholder="Pintura, área do Sludge"></div>
+
+      <div class="campo"><label>Fotos dos anexos</label>
+        <div class="capa-ajuste">
+          <div class="lin" style="grid-template-columns:150px 1fr">
+            <span>Formato</span>
+            <select id="ck_fotofmt" onchange="agendarPrevia()">
+              <option value="uniforme">Todas do mesmo tamanho (recorta e alinha)</option>
+              <option value="original">Manter o formato original de cada foto</option>
+            </select>
+          </div>
+          <div class="lin" style="grid-template-columns:150px 1fr">
+            <span>Proporção</span>
+            <select id="ck_fotoprop" onchange="repadronizarFotosCk()">
+              <option value="1.3333">4:3 — paisagem (padrão)</option>
+              <option value="1.7778">16:9 — panorâmica</option>
+              <option value="1">1:1 — quadrada</option>
+              <option value="0.75">3:4 — retrato</option>
+            </select>
+          </div>
+        </div>
+        <small class="dica-auto">As fotos são recortadas pelo centro para ficarem todas iguais —
+        o arquivo original não é alterado.</small>
+      </div>
+
+      <h2 style="margin-top:16px;cursor:default"><span>5.2 · Itens verificados</span></h2>
+      <div id="ck-grupos"></div>
+      <div class="acoes-add" style="margin-top:10px">
+        <button class="btn btn-add" type="button" onclick="addGrupoCk()">＋ grupo em branco</button>
+        <button class="btn btn-add" type="button" onclick="carregarGruposPadrao()">📋 carregar os 4 grupos padrão</button>
+        <button class="btn btn-add" type="button" onclick="marcarTudoCk('C')">✔ marcar tudo como Conforme</button>
+      </div>
+
+      <h2 style="margin-top:16px;cursor:default"><span>5.3 · Conclusão</span></h2>
+      <div class="campo"><label for="ck_conclusao">Texto da conclusão
+        <small>(o botão abaixo escreve com base no que você marcou)</small></label>
+        <textarea id="ck_conclusao" rows="4" spellcheck="true" lang="pt-BR"></textarea></div>
+      <div class="acoes-add">
+        <button class="btn btn-add" type="button" onclick="gerarConclusaoCk()">✨ escrever a conclusão a partir dos itens</button>
+      </div>
+      <div class="grid2">
+        <div class="campo"><label for="ck_dataconc">Data da conclusão</label><input type="text" id="ck_dataconc" placeholder="dd-mm-aaaa"></div>
+        <div class="campo"><label for="ck_periodo">Período avaliado</label><input type="text" id="ck_periodo" value="1 mês"></div>
       </div>
     </section>
 
@@ -1482,16 +1688,17 @@ const PG={W:794,H:1123,CORPO_W:654,CORPO_H:925};
 /* Área útil de cada padrão, em px de uma folha A4 a 96 dpi.
    Estes valores são só o ponto de partida: em cada montagem eles são
    REMEDIDOS na página de verdade, para a paginação bater com o papel. */
-const AREA={afd:{w:604,h:850}, proposta:{w:620,h:884}};
+const AREA={afd:{w:604,h:850}, proposta:{w:620,h:884}, checklist:{w:618,h:911}};
 
 /* Ajuste fino medido comparando a prévia com o PDF compilado: o TeX
    hifeniza e reparte o texto de outro jeito, e acaba usando um pouco
    mais de folha do que o navegador. 1 = sem ajuste. */
-const FATOR_FOLHA={afd:1.00, proposta:0.97};
+const FATOR_FOLHA={afd:1.00, proposta:0.97, checklist:0.97};
 
 /* Mede a caixa de conteúdo de uma página real e guarda em AREA */
 function medirAreaUtil(padrao){
-  const pg = padrao==='proposta' ? novaPaginaProposta({}) : novaPaginaConteudo({});
+  const pg = padrao==='checklist' ? novaPaginaCk({ck:{capitulo:''}})
+           : (padrao==='proposta' ? novaPaginaProposta({}) : novaPaginaConteudo({}));
   pg.style.position='absolute'; pg.style.left='-9999px'; pg.style.visibility='hidden';
   document.body.appendChild(pg);
   const c = pg.querySelector('.pg-corpo');
@@ -1615,7 +1822,23 @@ function linhaDeMarcadoresTab(l){
   return [...l.matchAll(/\[\s*t\s*(\d+)\s*\]/gi)].map(m=>parseInt(m[1],10)-1);
 }
 
+/* o marcador {{ASSINATURA}} vira um bloco com linha, nome e cargo */
+function blocoAssinaturaHTML(){
+  const v2=id=>{const e=document.getElementById(id); return e?e.value.trim():'';};
+  let nome=v2('p_assin'), cargo=v2('p_cargo');
+  if(!nome){
+    const p=document.querySelector('#lista-elaborado .p-nome');
+    const c=document.querySelector('#lista-elaborado .p-cargo');
+    nome=p?p.value.trim():''; cargo=c?c.value.trim():'';
+  }
+  return '<div class="assina"><div class="linha"></div>'+
+         '<div class="nome">'+escHtml(nome||'\u00a0')+'</div>'+
+         (cargo?'<div class="cargo">'+escHtml(cargo)+'</div>':'')+'</div>';
+}
+
 function formatarInline(s){
+  if(/\{\{ASSINATURA\}\}/.test(s||''))
+    return escHtml(s).replace(/\{\{ASSINATURA\}\}/g, blocoAssinaturaHTML());
   return escHtml(s)
     .replace(/\[T(\d{1,2})\]([\s\S]*?)\[\/T\]/g,(m,pt,txt)=>
       '<span class="tam-txt" data-t="'+pt+'" style="font-size:'+Math.round(pt*13/12)+'px">'+txt+'</span>')
@@ -2422,6 +2645,7 @@ function addSec(dados={}){
     <input type="file" class="add-fig" accept="image/png,image/jpeg" multiple style="display:none" onchange="lerFiguras(this)">`;
   document.getElementById('lista-sec').appendChild(d);
   montarSelectsCampos();
+  var __blocoCriado = d;
   /* mantém os "＋ inserir aqui" em dia venha o bloco de onde vier */
   if(typeof montarPontosDeInsercao==='function') montarPontosDeInsercao();
   if(typeof pintarPosicoes==='function') pintarPosicoes();
@@ -2528,18 +2752,33 @@ function criarNovaTabelaForm(bloco, dados = null) {
         </select>
       </div>
     </div>
-    <div style="display:flex; gap:6px; margin-bottom:6px;">
-      <button class="btn btn-mini" type="button" onclick="alterarGridTabela(this, 1, 0)">+ Linha</button>
-      <button class="btn btn-mini" type="button" onclick="alterarGridTabela(this, 0, 1)">+ Coluna</button>
-      <button class="btn btn-mini" type="button" onclick="alterarGridTabela(this, -1, 0)" style="color:#a33;">- Linha</button>
-      <button class="btn btn-mini" type="button" onclick="alterarGridTabela(this, 0, -1)" style="color:#a33;">- Coluna</button>
+    <div class="tab-ferramentas">
+      <label style="display:flex;align-items:center;gap:5px;font-size:12px;color:var(--grafite);cursor:pointer">
+        <input type="checkbox" class="t-titulo-linha" onchange="alternarTituloTabela(this)"> título da tabela inteira</label>
+      <span class="sep"></span>
+      <label style="display:flex;align-items:center;gap:5px;font-size:12px;color:var(--grafite);cursor:pointer">
+        <input type="checkbox" class="t-cabecalho" checked onchange="agendarPrevia()"> 1ª linha é cabeçalho</label>
+      <span class="sep"></span>
+      <label style="display:flex;align-items:center;gap:5px;font-size:12px;color:var(--grafite);cursor:pointer">
+        <input type="checkbox" class="t-zebra" onchange="agendarPrevia()"> linhas alternadas</label>
+      <span class="sep"></span>
+      <button class="btn btn-mini" type="button" onclick="alterarGridTabela(this, 1, 0)">＋ linha no fim</button>
+      <button class="btn btn-mini" type="button" onclick="alterarGridTabela(this, 0, 1)">＋ coluna no fim</button>
+      <span class="sep"></span>
+      <button class="btn btn-mini" type="button" onclick="colarDoExcel(this)"
+              title="Cole as células copiadas do Excel e a tabela é montada sozinha">📋 colar do Excel</button>
     </div>
-    <div style="overflow-x:auto;">
+    <div class="tab-grade" style="overflow-x:auto;">
       <table class="excel-table-grid"></table>
     </div>
+    <small class="tab-legenda-inline">Use os <b>+</b> entre as letras/números para inserir
+      exatamente ali, e o <b>×</b> para excluir aquela linha ou coluna.</small>
   `;
   container.appendChild(tBox);
   
+  if(dados && dados.titulo) tBox.querySelector('.t-titulo-linha').checked = true;
+  if(dados && dados.cab===false) tBox.querySelector('.t-cabecalho').checked = false;
+  if(dados && dados.zebra) tBox.querySelector('.t-zebra').checked = true;
   const tableGrid = tBox.querySelector('.excel-table-grid');
   for(let r=0; r<rowsCount; r++) {
     const tr = document.createElement('tr');
@@ -2551,6 +2790,7 @@ function criarNovaTabelaForm(bloco, dados = null) {
     }
     tableGrid.appendChild(tr);
   }
+  montarComandosTabela(tBox);
   renumerarTabelas(bloco);
   agendarPrevia();
 }
@@ -2561,6 +2801,713 @@ function renumerarTabelas(bloco) {
     box.querySelector('.fig-id').textContent = 'T' + (i + 1);
   });
 }
+
+
+/* ==================================================================
+   EDITOR DE TABELA
+   ------------------------------------------------------------------
+   Além dos botões "no fim", cada coluna e cada linha ganha um "+"
+   para inserir naquele ponto e um "×" para excluir só ela.
+   ================================================================== */
+
+
+/* ==================================================================
+   CHECKLIST DE ASSISTÊNCIA TÉCNICA
+   ------------------------------------------------------------------
+   O que poupa tempo aqui:
+   - os quatro grupos de verificação já vêm com todos os itens prontos,
+     transcritos do checklist padrão da Falcare;
+   - marcar é clicar em C / NC / NA, não digitar;
+   - a conclusão se escreve sozinha a partir do que foi marcado;
+   - as não conformidades viram um resumo, para não escapar nenhuma.
+   ================================================================== */
+const GRUPOS_PADRAO = [
+  {nome:'Mecânica / Estrutural', itens:['Estrutura','Desgaste','Elementos de fixação','Correias',
+    'Correntes','Engrenagens','Guias','Rodas','Pontos de lubrificação','Rolamentos','Pinos',
+    'Buchas','Motores','Alinhamento geral','Nivelamento','Torqueamento dos parafusos']},
+  {nome:'Sistema Pneumático', itens:['Atuadores','Engates rápidos','Mangueiras',
+    'Reguladores de pressão','Válvulas','Suportes','Pressão da rede','Pressão do esticador',
+    'Pressão do stopper']},
+  {nome:'Motores', itens:['Corrente','Corrente de partida','Corrente de frenagem']},
+  {nome:'Software', itens:['Carga do drive','Frequência','Pressostatos','PLC','Limpeza',
+    'Análise de desempenho','Desgaste dos componentes','Plano de manutenção']}
+];
+
+function addGrupoCk(dados){
+  const d = dados || {nome:'', itens:[], obs:'', anexos:[]};
+  const cx = document.getElementById('ck-grupos');
+  const g = document.createElement('div');
+  g.className = 'ck-grupo';
+  g.innerHTML =
+    '<div class="ck-grupo-top">'+
+      '<span class="tag">grupo</span>'+
+      '<input type="text" class="nome" value="'+escAttr(d.nome||'')+'" placeholder="Nome do grupo (ex.: Mecânica / Estrutural)">'+
+      '<button class="btn btn-mini" type="button" onclick="addItemCk(this)">＋ item</button>'+
+      '<button class="btn btn-mini btn-lixo" type="button" '+
+        'onclick="capturar();this.closest(\'.ck-grupo\').remove();atualizarPrevia();resumoCk();capturar()">🗑</button>'+
+    '</div>'+
+    '<div class="ck-lista"></div>'+
+    '<div class="campo" style="margin-top:9px"><label>Observações gerais</label>'+
+      '<textarea class="ck-obs-txt" rows="3" placeholder="uma linha por observação">'+escHtml(d.obs||'')+'</textarea></div>'+
+    '<div class="campo"><label>Anexos deste grupo <small>(fotos, 2 por linha)</small></label>'+
+      '<div class="linha-logo">'+
+        '<button class="btn btn-mini" type="button" onclick="this.parentNode.querySelector(\'input[type=file]\').click()">🖼 adicionar fotos</button>'+
+        '<input type="file" accept="image/*" multiple style="display:none" onchange="lerFotosCk(this)">'+
+        '<span class="ck-conta-fotos" style="font-size:12px;color:var(--grafite)"></span>'+
+      '</div>'+
+      '<div class="ck-fotos" style="display:flex;gap:7px;flex-wrap:wrap;margin-top:7px"></div></div>';
+  cx.appendChild(g);
+  (d.itens||[]).forEach(it=>addItemCk(g.querySelector('button'), it));
+  (d.anexos||[]).forEach(a=>inserirFotoCk(g, a));
+  return g;
+}
+
+function addItemCk(btn, dados){
+  const g = btn.closest('.ck-grupo');
+  const lista = g.querySelector('.ck-lista');
+  const d = (typeof dados==='string') ? {nome:dados, valor:''} : (dados||{nome:'',valor:''});
+  const l = document.createElement('div');
+  l.className='ck-linha';
+  l.innerHTML =
+    '<input type="text" class="it" value="'+escAttr(d.nome||'')+'" placeholder="item verificado">'+
+    '<div class="ck-radios">'+
+      ['C','NC','NA'].map(v=>'<button type="button" data-v="'+v+'"'+
+        (d.valor===v?' class="on"':'')+' onclick="marcarCk(this)">'+v+'</button>').join('')+
+    '</div>'+
+    '<button class="btn btn-mini btn-lixo" type="button" '+
+      'onclick="capturar();this.closest(\'.ck-linha\').remove();atualizarPrevia();resumoCk();capturar()">×</button>';
+  lista.appendChild(l);
+  return l;
+}
+
+function marcarCk(btn){
+  const grupo = btn.parentNode;
+  const jaEstava = btn.classList.contains('on');
+  [...grupo.children].forEach(b=>b.classList.remove('on'));
+  if(!jaEstava) btn.classList.add('on');    /* clicar de novo desmarca */
+  agendarPrevia(); resumoCk(); capturarDepois(700);
+}
+
+function marcarTudoCk(valor){
+  capturar();
+  document.querySelectorAll('#ck-grupos .ck-radios').forEach(r=>{
+    [...r.children].forEach(b=>b.classList.toggle('on', b.dataset.v===valor));
+  });
+  atualizarPrevia(); resumoCk(); capturar();
+  avisar('Todos os itens marcados como '+valor+' — ajuste os que forem diferentes');
+}
+
+function carregarGruposPadrao(){
+  capturar();
+  const cx=document.getElementById('ck-grupos');
+  const jaTem = cx.querySelectorAll('.ck-grupo').length;
+  GRUPOS_PADRAO.forEach(g=>addGrupoCk({nome:g.nome, itens:g.itens.map(i=>({nome:i,valor:''}))}));
+  atualizarPrevia(); resumoCk(); capturar();
+  const n = GRUPOS_PADRAO.reduce((s,g)=>s+g.itens.length,0);
+  avisar((jaTem?'Acrescentei':'Carreguei')+' 4 grupos com '+n+' itens — marque C, NC ou NA');
+}
+
+function lerFotosCk(input){
+  const g = input.closest('.ck-grupo');
+  const arqs=[...input.files]; input.value='';
+  arqs.forEach(f=>{
+    const r=new FileReader();
+    r.onload=async()=>{
+      const orig=r.result;
+      const img = (formatoFotoCk()==='uniforme')
+        ? await padronizarFoto(orig, proporcaoFotoCk()) : orig;
+      inserirFotoCk(g,{img, orig, leg:''});
+      agendarPrevia();
+    };
+    r.readAsDataURL(f);
+  });
+}
+
+function inserirFotoCk(g, dados){
+  const cx=g.querySelector('.ck-fotos');
+  const d=document.createElement('div');
+  d.className='ck-foto';
+  d.style.cssText='width:118px;border:1px solid var(--linha);border-radius:6px;padding:5px;background:#FCFBFA';
+  d.dataset.img=dados.img||'';
+  d.dataset.orig=dados.orig||dados.img||'';
+  d.innerHTML=
+    '<img src="'+(dados.img||'')+'" style="width:100%;height:66px;object-fit:contain;background:#fff">'+
+    '<input type="text" class="ck-leg-foto" value="'+escAttr(dados.leg||'')+'" placeholder="legenda" '+
+      'style="width:100%;box-sizing:border-box;font-size:11px;padding:3px 4px;margin-top:4px;'+
+      'border:1px solid var(--linha);border-radius:3px">'+
+    '<button class="btn btn-mini btn-lixo" type="button" style="width:100%;margin-top:3px;font-size:11px" '+
+      'onclick="capturar();this.closest(\'.ck-foto\').remove();atualizarPrevia();capturar()">remover</button>';
+  cx.appendChild(d);
+  const conta=g.querySelector('.ck-conta-fotos');
+  if(conta) conta.textContent=cx.children.length+' foto(s)';
+}
+
+/* Resumo: quantos C, NC, NA e quais são as não conformidades */
+function resumoCk(){
+  const el=document.getElementById('ck-resumo');
+  if(!el) return;
+  const d=coletarChecklist();
+  let c=0,nc=0,na=0,vazios=0;
+  const listaNC=[];
+  d.grupos.forEach(g=>g.itens.forEach(i=>{
+    if(i.valor==='C') c++;
+    else if(i.valor==='NC'){ nc++; listaNC.push(g.nome+' → '+i.nome); }
+    else if(i.valor==='NA') na++;
+    else vazios++;
+  }));
+  const tot=c+nc+na+vazios;
+  if(!tot){ el.innerHTML='Marque cada item e o resumo aparece aqui.'; return; }
+  el.innerHTML =
+    '<b>'+tot+' itens</b> · ✔ '+c+' conforme · ⛔ '+nc+' não conforme · — '+na+' não aplicável'+
+    (vazios?' · <b>'+vazios+' sem marcar</b>':'')+
+    (listaNC.length?'<div style="margin-top:6px">Não conformidades: '+
+      listaNC.map(x=>escHtml(x)).join(' · ')+'</div>':'');
+}
+
+/* Escreve a conclusão a partir do que foi marcado */
+function gerarConclusaoCk(){
+  const d=coletarChecklist();
+  const nc=[];
+  d.grupos.forEach(g=>g.itens.forEach(i=>{ if(i.valor==='NC') nc.push(g.nome.toLowerCase()+' ('+i.nome.toLowerCase()+')'); }));
+  const obs=d.grupos.map(g=>(g.obs||'').trim()).filter(Boolean);
+  const periodo=(document.getElementById('ck_periodo').value||'1 mês').trim();
+
+  let txt;
+  if(!nc.length){
+    txt='Após a revisão minuciosa dos itens, confirmamos que, para o período de '+periodo+
+        ', os equipamentos se encontram em pleno funcionamento, atendendo às expectativas de desempenho.';
+  }else{
+    txt='Após a revisão minuciosa dos itens, foram identificadas '+nc.length+
+        ' não conformidade'+(nc.length>1?'s':'')+': '+nc.join('; ')+'. '+
+        'Os demais itens verificados encontram-se em conformidade. '+
+        'Recomendamos o tratamento dos pontos acima antes da próxima revisão, prevista para '+periodo+'.';
+  }
+  if(obs.length) txt += '\n\nObservações registradas durante a visita: '+obs.join(' ');
+
+  capturar();
+  document.getElementById('ck_conclusao').value=txt;
+  agendarPrevia(); capturar();
+  avisar(nc.length?('Conclusão escrita — '+nc.length+' não conformidade(s) citada(s)')
+                  :'Conclusão escrita — nenhuma não conformidade');
+}
+
+function coletarChecklist(){
+  const v2=id=>{const e=document.getElementById(id); return e?e.value.trim():'';};
+  return {
+    capitulo:v2('ck_capitulo'), revisao:v2('ck_revisao'),
+    fa:v2('ck_fa'), fadesc:v2('ck_fadesc'), equip:v2('ck_equip'), comiss:v2('ck_comiss'),
+    tipo:v2('ck_tipo'), funcao:v2('ck_funcao'), localinst:v2('ck_localinst'),
+    conclusao:(document.getElementById('ck_conclusao')||{}).value||'',
+    fotofmt:formatoFotoCk(), fotoprop:(document.getElementById('ck_fotoprop')||{}).value||'1.3333',
+    dataconc:v2('ck_dataconc'), periodo:v2('ck_periodo'),
+    grupos:[...document.querySelectorAll('#ck-grupos .ck-grupo')].map(g=>({
+      nome:g.querySelector('.nome').value.trim(),
+      obs:g.querySelector('.ck-obs-txt').value,
+      itens:[...g.querySelectorAll('.ck-linha')].map(l=>({
+        nome:l.querySelector('.it').value.trim(),
+        valor:(l.querySelector('.ck-radios .on')||{dataset:{}}).dataset.v||''
+      })).filter(i=>i.nome),
+      anexos:[...g.querySelectorAll('.ck-foto')].map(f=>({
+        img:f.dataset.img||'', orig:f.dataset.orig||'',
+        leg:f.querySelector('.ck-leg-foto').value.trim()
+      }))
+    }))
+  };
+}
+
+function carregarChecklist(ck){
+  if(!ck) return;
+  const set=(id,v)=>{const e=document.getElementById(id); if(e && v!==undefined) e.value=v;};
+  ['capitulo','revisao','fa','fadesc','equip','comiss','tipo','funcao','localinst',
+   'conclusao','dataconc','periodo','fotofmt','fotoprop'].forEach(k=>set('ck_'+k, ck[k]));
+  const cx=document.getElementById('ck-grupos');
+  if(cx){ cx.innerHTML=''; (ck.grupos||[]).forEach(g=>addGrupoCk(g)); }
+  resumoCk();
+}
+
+/* ==================================================================
+   IMPORTAR DE UM PDF
+   ------------------------------------------------------------------
+   Manda o PDF ao Gemini e recebe de volta a estrutura do documento
+   (capítulos, seções, texto e listas) em JSON, que alimenta o editor.
+   Também tenta reconhecer os dados de cabeçalho — código, cliente,
+   título, revisão — e o tamanho da letra usado.
+
+   O que NÃO faz: recriar o layout do PDF. Cores, logos e posições
+   continuam vindo do padrão Falcare; o que dá para ajustar fica nos
+   controles do card 1.
+   ================================================================== */
+let pdfParaImportar = null;
+
+function abrirImportarPDF(){
+  const f=document.createElement('div');
+  f.className='imp-fundo';
+  f.innerHTML=
+    '<div class="imp-cx">'+
+      '<div class="imp-top"><h4>📥 Importar de um PDF</h4>'+
+      '<div class="sub">Leio o documento e monto os capítulos aqui dentro — serve para trazer '+
+      'um documento antigo ou o memorial descritivo do cliente.</div></div>'+
+      '<div class="imp-corpo" id="imp-corpo">'+
+        '<div class="imp-solta" id="imp-solta">'+
+          '📄 <b>Clique para escolher</b> ou arraste o PDF aqui<br>'+
+          '<small>até 100 MB</small></div>'+
+        '<input type="file" id="imp-arq" accept="application/pdf,.pdf" style="display:none">'+
+        '<div style="margin-top:14px">'+
+          '<label class="imp-op"><input type="checkbox" id="imp-estrutura" checked>'+
+            '<span><b>Capítulos e texto</b><small>títulos, seções, parágrafos e listas</small></span></label>'+
+          '<label class="imp-op"><input type="checkbox" id="imp-dados" checked>'+
+            '<span><b>Dados do cabeçalho</b><small>código, título, cliente, revisão e data</small></span></label>'+
+          '<label class="imp-op"><input type="checkbox" id="imp-tabelas" checked>'+
+            '<span><b>Tabelas</b><small>vira tabela editável no capítulo correspondente</small></span></label>'+
+          '<label class="imp-op"><input type="checkbox" id="imp-substituir">'+
+            '<span><b>Substituir o documento atual</b>'+
+            '<small>desmarcado, os capítulos entram no fim do que já existe</small></span></label>'+
+        '</div>'+
+      '</div>'+
+      '<div class="imp-acoes">'+
+        '<button class="btn" data-a="fechar">Cancelar</button>'+
+        '<button class="btn btn-primario" data-a="ler" disabled>Ler o PDF</button>'+
+      '</div>'+
+    '</div>';
+  document.body.appendChild(f);
+  pdfParaImportar=null;
+
+  const solta=f.querySelector('#imp-solta');
+  const arq=f.querySelector('#imp-arq');
+  const btnLer=f.querySelector('[data-a="ler"]');
+
+  const receber=file=>{
+    if(!file) return;
+    const ehPdf = file.type==='application/pdf' || /\.pdf$/i.test(file.name);
+    if(!ehPdf){ solta.innerHTML='❌ Isso não é um PDF. Escolha um arquivo .pdf'; return; }
+    if(file.size>window.LIMITE_ARQUIVO){
+      solta.innerHTML='❌ Passa de 100 MB. Separe só as páginas que interessam.'; return; }
+    pdfParaImportar=file;
+    solta.innerHTML='📄 <b>'+escHtml(file.name)+'</b><br><small>'+
+      (file.size/1048576).toFixed(1)+' MB — clique para trocar</small>';
+    btnLer.disabled=false;
+  };
+
+  solta.addEventListener('click',()=>arq.click());
+  arq.addEventListener('change',()=>receber(arq.files[0]));
+  ['dragenter','dragover'].forEach(ev=>solta.addEventListener(ev,e=>{
+    e.preventDefault(); solta.classList.add('sobre'); }));
+  ['dragleave','drop'].forEach(ev=>solta.addEventListener(ev,e=>{
+    e.preventDefault(); solta.classList.remove('sobre'); }));
+  solta.addEventListener('drop',e=>{ receber(e.dataTransfer.files[0]); });
+
+  f.addEventListener('click',e=>{
+    if(e.target===f) return f.remove();
+    const a=e.target.dataset.a;
+    if(a==='fechar') f.remove();
+    if(a==='ler') lerPDFimportado(f);
+  });
+}
+
+async function lerPDFimportado(caixa){
+  if(!pdfParaImportar) return;
+  if(!gem.key){
+    caixa.remove();
+    abrirGemini(); modoGemini('app');
+    informar('Falta conectar a IA',
+      'A leitura do PDF é feita pelo Gemini. Conecte a chave do AI Studio na aba "No app" e tente de novo.');
+    return;
+  }
+
+  const opc={
+    estrutura: caixa.querySelector('#imp-estrutura').checked,
+    dados:     caixa.querySelector('#imp-dados').checked,
+    tabelas:   caixa.querySelector('#imp-tabelas').checked,
+    substituir:caixa.querySelector('#imp-substituir').checked
+  };
+  const corpo=caixa.querySelector('#imp-corpo');
+  const acoes=caixa.querySelector('.imp-acoes');
+  acoes.innerHTML='<button class="btn" data-a="fechar">Fechar</button>';
+  corpo.innerHTML='<div class="imp-log" id="imp-log"></div>';
+  const log=(txt,cls)=>{
+    const d=document.createElement('div'); d.className=cls||'run'; d.textContent=txt;
+    document.getElementById('imp-log').appendChild(d);
+    d.scrollIntoView({block:'nearest'});
+    return d;
+  };
+
+  let passo=log('Preparando o arquivo…');
+  try{
+    const dataURL=await new Promise((ok,err)=>{
+      const r=new FileReader(); r.onload=()=>ok(r.result); r.onerror=err;
+      r.readAsDataURL(pdfParaImportar);
+    });
+    passo.className='ok'; passo.textContent='Arquivo preparado ('+(pdfParaImportar.size/1048576).toFixed(1)+' MB)';
+
+    passo=log('Lendo o documento com a IA… isso leva de 20 s a 1 min');
+    const bruto=await pedirAoGeminiComPDF(promptImportar(opc), dataURL);
+    passo.className='ok'; passo.textContent='Documento lido';
+
+    passo=log('Interpretando a estrutura…');
+    const dados=extrairJSON(bruto);
+    if(!dados || !Array.isArray(dados.secoes))
+      throw new Error('não consegui entender a estrutura devolvida');
+    passo.className='ok';
+    passo.textContent='Encontrei '+dados.secoes.length+' capítulo(s)'+
+      (dados.tabelas?' e '+dados.tabelas+' tabela(s)':'');
+
+    mostrarPreviaImportacao(caixa, dados, opc);
+  }catch(err){
+    passo.className='err';
+    passo.textContent='Não deu certo: '+(err.message||err);
+    log('Se o PDF for muito longo, tente separar só as páginas de conteúdo.','');
+  }
+}
+
+/* Chamada ao Gemini com o PDF embutido */
+async function pedirAoGeminiComPDF(prompt, dataURL){
+  const partes=[
+    {inline_data:{mime_type:'application/pdf', data:dataURL.split(',')[1]}},
+    {text:prompt}
+  ];
+  const r=await postGemini('/models/'+gem.modelo+':generateContent',{
+    contents:[{role:'user',parts:partes}],
+    generationConfig:{temperature:0.1, maxOutputTokens:32768}
+  });
+  const d=await r.json();
+  if(!r.ok) throw new Error(d.error?.message || ('HTTP '+r.status));
+  const cand=d.candidates?.[0];
+  const txt=cand?.content?.parts?.map(p=>p.text||'').join('').trim()||'';
+  if(!txt){
+    if(cand?.finishReason==='MAX_TOKENS')
+      throw new Error('o documento é grande demais para uma leitura só — separe em partes');
+    throw new Error('a IA não devolveu conteúdo');
+  }
+  return txt;
+}
+
+function promptImportar(opc){
+  return (
+'Leia o documento técnico em anexo e devolva a estrutura dele em JSON.\n\n'+
+'RESPONDA SOMENTE COM O JSON, sem cercas de código e sem comentários, neste formato:\n'+
+'{\n'+
+'  "dados": {"codigo":"", "titulo":"", "tipodoc":"", "cliente":"", "planta":"",\n'+
+'            "cidade":"", "revisao":"", "data":"dd/mm/aaaa"},\n'+
+'  "secoes": [\n'+
+'    {"nivel":"section|subsection|subsubsection", "titulo":"", "texto":"",\n'+
+'     "tabelas":[{"legenda":"", "titulo":"", "linhas":[["c1","c2"],["v1","v2"]]}]}\n'+
+'  ]\n'+
+'}\n\n'+
+'REGRAS\n'+
+'1. "nivel": capítulo numerado 1. = section; 1.1. = subsection; 1.1.1. = subsubsection.\n'+
+'2. "titulo": só o texto do título, SEM o número (o programa numera sozinho).\n'+
+'3. "texto": o conteúdo daquela seção. Listas com "- " no começo da linha; '+
+'sub-itens com "-- ". Parágrafos separados por linha em branco. '+
+'Use **negrito** onde o original estiver em negrito.\n'+
+'4. NÃO invente conteúdo: transcreva o que está escrito. Preserve números, '+
+'medidas, marcas, modelos e códigos exatamente como aparecem.\n'+
+'5. Ignore cabeçalho e rodapé de página, sumário e capa — só o conteúdo.\n'+
+(opc.tabelas
+  ? '6. Tabelas: transcreva em "tabelas", com a primeira linha sendo o cabeçalho. '+
+    'Se a tabela tiver um título que atravessa todas as colunas, ponha em "titulo".\n'
+  : '6. Ignore as tabelas.\n')+
+(opc.dados ? '7. Preencha "dados" com o que encontrar no cabeçalho/capa. O que não achar, deixe "".\n'
+           : '7. Deixe "dados" com todos os campos vazios.\n')+
+'\nComece a resposta com { e termine com }.');
+}
+
+/* A IA às vezes embrulha o JSON em texto — isto acha o objeto */
+function extrairJSON(txt){
+  let s=(txt||'').trim();
+  s=s.replace(/^```(?:json)?\s*/i,'').replace(/```\s*$/,'').trim();
+  const i=s.indexOf('{'), j=s.lastIndexOf('}');
+  if(i<0||j<i) return null;
+  s=s.slice(i,j+1);
+  try{ return JSON.parse(s); }catch(_){}
+  /* tentativa de conserto: vírgula sobrando antes de } ou ] */
+  try{ return JSON.parse(s.replace(/,\s*([}\]])/g,'$1')); }catch(_){}
+  return null;
+}
+
+function mostrarPreviaImportacao(caixa, dados, opc){
+  const corpo=caixa.querySelector('.imp-corpo');
+  const d=dados.dados||{};
+  const linhasDados=[['Código',d.codigo],['Título',d.titulo],['Documento',d.tipodoc],
+    ['Cliente',d.cliente],['Planta',d.planta],['Revisão',d.revisao],['Data',d.data]]
+    .filter(([k,v])=>v && String(v).trim());
+
+  const estrutura=(dados.secoes||[]).map(s=>{
+    const m=s.nivel==='section'?'▪':(s.nivel==='subsection'?'&nbsp;&nbsp;▫':'&nbsp;&nbsp;&nbsp;&nbsp;·');
+    const n=(s.texto||'').trim().length;
+    const t=(s.tabelas||[]).length;
+    return m+' <b>'+escHtml(s.titulo||'(sem título)')+'</b> '+
+      '<span style="color:#9A8F86">'+(n?n+' car.':'vazio')+(t?' · '+t+' tabela(s)':'')+'</span>';
+  }).join('<br>');
+
+  corpo.innerHTML=
+    (opc.dados && linhasDados.length
+      ? '<div style="margin-bottom:12px"><b style="font-size:12.5px">Dados encontrados</b>'+
+        '<div class="imp-previa" style="margin-top:6px">'+
+        linhasDados.map(([k,v])=>'<b>'+k+':</b> '+escHtml(String(v))).join('<br>')+'</div></div>'
+      : '')+
+    '<div><b style="font-size:12.5px">Estrutura ('+(dados.secoes||[]).length+' blocos)</b>'+
+    '<div class="imp-previa" style="margin-top:6px">'+(estrutura||'(nada encontrado)')+'</div></div>'+
+    '<div style="font-size:12px;color:#9A8F86;margin-top:10px">Confira antes de aplicar. '+
+    (opc.substituir?'O documento atual será <b>substituído</b>.':'Os blocos entram <b>no fim</b> do documento atual.')+
+    ' CTRL+Z desfaz.</div>';
+
+  caixa.querySelector('.imp-acoes').innerHTML=
+    '<button class="btn" data-a="fechar">Cancelar</button>'+
+    '<button class="btn btn-primario" data-a="aplicar">Aplicar ao documento</button>';
+  caixa.addEventListener('click',e=>{
+    if(e.target.dataset.a==='aplicar'){ aplicarImportacao(dados,opc); caixa.remove(); }
+  });
+}
+
+function aplicarImportacao(dados, opc){
+  capturar();
+  const d=dados.dados||{};
+  const set=(id,v)=>{ const e=document.getElementById(id); if(e && v && String(v).trim()) e.value=String(v).trim(); };
+
+  if(opc.dados){
+    set('codigo',d.codigo); set('equip',d.titulo); set('cliente',d.cliente);
+    set('planta',d.planta); set('cidadecli',d.cidade); set('revisao',d.revisao); set('data',d.data);
+    if(d.tipodoc){
+      const sel=document.getElementById('tipodoc');
+      const op=[...sel.options].find(o=>o.text.toLowerCase()===String(d.tipodoc).toLowerCase());
+      if(op) sel.value=op.value;
+    }
+    sincronizarDataExtenso(); sincronizarTitRodape();
+  }
+
+  if(opc.estrutura){
+    if(opc.substituir) document.getElementById('lista-sec').innerHTML='';
+    (dados.secoes||[]).forEach(s=>{
+      const niv=['section','subsection','subsubsection'].includes(s.nivel)?s.nivel:'section';
+      const bloco=addSec({nivel:niv, titulo:(s.titulo||'').trim(), texto:(s.texto||'').trim()});
+      /* tabelas daquela seção */
+      if(opc.tabelas && Array.isArray(s.tabelas) && s.tabelas.length){
+        const b=blocosSec()[blocosSec().length-1];
+        s.tabelas.forEach((t,i)=>{
+          const linhas=Array.isArray(t.linhas)?t.linhas.filter(l=>Array.isArray(l)):[];
+          if(!linhas.length) return;
+          const cols=Math.max(...linhas.map(l=>l.length));
+          const matrix=linhas.map(l=>{ const c=l.slice(); while(c.length<cols) c.push(''); return c; });
+          if(t.titulo) matrix.unshift([String(t.titulo)].concat(Array(cols-1).fill('')));
+          criarNovaTabelaForm(b,{cap:t.legenda||'', align:'center',
+            rows:matrix.length, cols:cols, matrix:matrix, titulo:!!t.titulo, cab:true});
+          const ta=b.querySelector('.s-texto');
+          ta.value=(ta.value.trim()+'\n\n[T'+(i+1)+']').trim();
+        });
+      }
+    });
+    montarPontosDeInsercao(); pintarPosicoes(); revisarNovaPagina(); revisarTitulos();
+  }
+
+  recolherTudo();
+  atualizarPrevia();
+  revisarPendencias();
+  capturar();
+  avisar('PDF importado — '+(dados.secoes||[]).length+' bloco(s). CTRL+Z desfaz.');
+}
+
+/* ==================================================================
+   COLAR TABELA DO EXCEL
+   ------------------------------------------------------------------
+   O Excel copia como TSV: colunas separadas por tabulação, linhas por
+   quebra de linha. Basta repartir e montar a grade.
+   ================================================================== */
+function colarDoExcel(btn){
+  const tBox=btn.closest('.tab-editor-box');
+  const f=document.createElement('div');
+  f.className='dlg-fundo';
+  f.innerHTML=
+    '<div class="dlg-cx" style="max-width:640px"><h4>Colar do Excel</h4>'+
+    '<p>Selecione as células no Excel, copie (CTRL+C) e cole aqui com CTRL+V.</p>'+
+    '<textarea id="cx-excel" rows="9" style="width:100%;font-family:Consolas,monospace;'+
+    'font-size:12.5px;padding:9px;border:1px solid var(--linha);border-radius:6px;margin:10px 0 4px" '+
+    'placeholder="cole aqui…"></textarea>'+
+    '<div id="cx-excel-info" style="font-size:12px;color:var(--grafite);min-height:18px"></div>'+
+    '<div class="dlg-acoes"><button class="btn" data-r="0">Cancelar</button>'+
+    '<button class="btn btn-primario" data-r="1">Montar tabela</button></div></div>';
+  document.body.appendChild(f);
+  const ta=f.querySelector('#cx-excel');
+  const info=f.querySelector('#cx-excel-info');
+  setTimeout(()=>ta.focus(),80);
+
+  const analisar=()=>{
+    const m=matrizDoTexto(ta.value);
+    info.textContent = m.length
+      ? m.length+' linha(s) × '+Math.max(...m.map(l=>l.length))+' coluna(s) reconhecidas'
+      : '';
+    return m;
+  };
+  ta.addEventListener('input',analisar);
+  ta.addEventListener('paste',()=>setTimeout(analisar,30));
+
+  f.addEventListener('click',e=>{
+    if(e.target===f) return f.remove();
+    const r=e.target.dataset.r;
+    if(r==='0') f.remove();
+    if(r==='1'){
+      const m=matrizDoTexto(ta.value);
+      if(!m.length){ info.textContent='Nada reconhecido — cole as células copiadas do Excel.'; return; }
+      aplicarMatrizNaTabela(tBox,m);
+      f.remove();
+    }
+  });
+}
+
+/* TSV (Excel), CSV ou colunas separadas por ; */
+function matrizDoTexto(txt){
+  const linhas=(txt||'').replace(/\r\n?/g,'\n').split('\n').filter(l=>l.trim()!=='');
+  if(!linhas.length) return [];
+  const sep = linhas[0].includes('\t') ? '\t' : (linhas[0].includes(';') ? ';' : ',');
+  return linhas.map(l=>l.split(sep).map(c=>c.trim().replace(/^"(.*)"$/,'$1')));
+}
+
+function aplicarMatrizNaTabela(tBox, matriz){
+  capturar();
+  const g=tBox.querySelector('.excel-table-grid');
+  [...g.querySelectorAll('tr')].forEach(tr=>tr.remove());
+  const cols=Math.max(...matriz.map(l=>l.length));
+  matriz.forEach(linha=>{
+    const tr=document.createElement('tr');
+    for(let c=0;c<cols;c++){
+      const td=document.createElement('td');
+      td.innerHTML='<input type="text" class="cell-input" value="'+escAttr(linha[c]||'')+'" oninput="agendarPrevia()">';
+      tr.appendChild(td);
+    }
+    g.appendChild(tr);
+  });
+  montarComandosTabela(tBox);
+  agendarPrevia(); capturar();
+  avisar('Tabela montada: '+matriz.length+' linhas × '+cols+' colunas');
+}
+
+function grid(el){ return el.closest('.tab-editor-box').querySelector('.excel-table-grid'); }
+function celulaNova(){
+  const td=document.createElement('td');
+  td.innerHTML='<input type="text" class="cell-input" value="" oninput="agendarPrevia()">';
+  return td;
+}
+
+/* Redesenha a régua de colunas e a coluna de comandos das linhas */
+function montarComandosTabela(tBox){
+  const g = tBox.querySelector('.excel-table-grid');
+  const linhas = [...g.querySelectorAll('tr')].filter(tr=>!tr.classList.contains('regua'));
+  if(!linhas.length) return;
+  const nCols = linhas[0].querySelectorAll('td:not(.cmd)').length;
+
+  /* régua superior: + antes de cada coluna, × para excluir */
+  let regua = g.querySelector('tr.regua');
+  if(regua) regua.remove();
+  regua = document.createElement('tr');
+  regua.className='regua';
+  const vazio=document.createElement('td'); vazio.className='cmd'; regua.appendChild(vazio);
+  for(let c=0;c<nCols;c++){
+    const td=document.createElement('td'); td.className='cmd';
+    td.style.cssText='padding:2px;text-align:center;white-space:nowrap';
+    td.innerHTML =
+      '<button type="button" class="tab-mini" title="Inserir coluna aqui" onclick="inserirColuna(this,'+c+')">+</button>'+
+      '<button type="button" class="tab-mini rem" title="Excluir esta coluna" onclick="excluirColuna(this,'+c+')" style="margin-left:2px">×</button>';
+    regua.appendChild(td);
+  }
+  const fim=document.createElement('td'); fim.className='cmd';
+  fim.style.cssText='padding:2px;text-align:center';
+  fim.innerHTML='<button type="button" class="tab-mini" title="Inserir coluna no fim" onclick="inserirColuna(this,'+nCols+')">+</button>';
+  regua.appendChild(fim);
+  g.insertBefore(regua, g.firstChild);
+
+  /* comandos de cada linha, na frente dela */
+  linhas.forEach((tr,i)=>{
+    let cmd = tr.querySelector('td.cmd');
+    if(!cmd){ cmd=document.createElement('td'); cmd.className='cmd'; tr.insertBefore(cmd, tr.firstChild); }
+    cmd.style.cssText='padding:2px;white-space:nowrap';
+    cmd.innerHTML =
+      '<button type="button" class="tab-mini" title="Inserir linha aqui" onclick="inserirLinha(this,'+i+')">+</button>'+
+      '<button type="button" class="tab-mini rem" title="Excluir esta linha" onclick="excluirLinha(this,'+i+')" style="margin-left:2px">×</button>';
+    /* célula extra no fim, para alinhar com a régua */
+    let ex = tr.querySelector('td.fim');
+    if(!ex){ ex=document.createElement('td'); ex.className='fim'; tr.appendChild(ex); }
+  });
+  pintarPapeisTabela(tBox);
+}
+
+/* Marca visualmente a linha de título e a de cabeçalho */
+function pintarPapeisTabela(tBox){
+  const g=tBox.querySelector('.excel-table-grid');
+  const temTitulo = tBox.querySelector('.t-titulo-linha').checked;
+  const temCab    = tBox.querySelector('.t-cabecalho').checked;
+  const linhas=[...g.querySelectorAll('tr')].filter(tr=>!tr.classList.contains('regua'));
+  linhas.forEach((tr,i)=>{
+    tr.classList.toggle('celula-titulo', temTitulo && i===0);
+    tr.classList.toggle('celula-cab', temCab && i===(temTitulo?1:0));
+  });
+}
+
+function linhasDaTabela(el){
+  return [...grid(el).querySelectorAll('tr')].filter(tr=>!tr.classList.contains('regua'));
+}
+
+function inserirLinha(btn, pos){
+  const tBox=btn.closest('.tab-editor-box');
+  capturar();
+  const linhas=linhasDaTabela(btn);
+  const nCols=linhas[0].querySelectorAll('td:not(.cmd):not(.fim)').length;
+  const tr=document.createElement('tr');
+  for(let c=0;c<nCols;c++) tr.appendChild(celulaNova());
+  grid(btn).insertBefore(tr, linhas[pos] || null);
+  montarComandosTabela(tBox); agendarPrevia(); capturar();
+}
+function excluirLinha(btn, pos){
+  const tBox=btn.closest('.tab-editor-box');
+  const linhas=linhasDaTabela(btn);
+  if(linhas.length<=1){ avisar('A tabela precisa de pelo menos uma linha'); return; }
+  capturar();
+  linhas[pos].remove();
+  montarComandosTabela(tBox); agendarPrevia(); capturar();
+}
+function inserirColuna(btn, pos){
+  const tBox=btn.closest('.tab-editor-box');
+  capturar();
+  linhasDaTabela(btn).forEach(tr=>{
+    const cels=[...tr.querySelectorAll('td:not(.cmd):not(.fim)')];
+    tr.insertBefore(celulaNova(), cels[pos] || tr.querySelector('td.fim'));
+  });
+  montarComandosTabela(tBox); agendarPrevia(); capturar();
+}
+function excluirColuna(btn, pos){
+  const tBox=btn.closest('.tab-editor-box');
+  const linhas=linhasDaTabela(btn);
+  if(linhas[0].querySelectorAll('td:not(.cmd):not(.fim)').length<=1){
+    avisar('A tabela precisa de pelo menos uma coluna'); return;
+  }
+  capturar();
+  linhas.forEach(tr=>{
+    const cels=[...tr.querySelectorAll('td:not(.cmd):not(.fim)')];
+    if(cels[pos]) cels[pos].remove();
+  });
+  montarComandosTabela(tBox); agendarPrevia(); capturar();
+}
+
+/* Linha de título que atravessa a tabela inteira */
+function alternarTituloTabela(chk){
+  const tBox=chk.closest('.tab-editor-box');
+  capturar();
+  const linhas=linhasDaTabela(chk);
+  if(chk.checked){
+    const nCols=linhas[0].querySelectorAll('td:not(.cmd):not(.fim)').length;
+    const tr=document.createElement('tr');
+    for(let c=0;c<nCols;c++) tr.appendChild(celulaNova());
+    grid(chk).insertBefore(tr, linhas[0]);
+    const p=tr.querySelector('.cell-input');
+    setTimeout(()=>{ p.focus(); p.placeholder='título que atravessa a tabela'; },80);
+  }else{
+    /* devolve a primeira linha ao corpo em vez de perder o que estava escrito */
+    const primeira=linhas[0];
+    const vazia=[...primeira.querySelectorAll('.cell-input')].every(i=>!i.value.trim());
+    if(!vazia && !confirmarSimples()) { chk.checked=true; return; }
+    if(linhas.length>1) primeira.remove();
+  }
+  montarComandosTabela(tBox); agendarPrevia(); capturar();
+}
+function confirmarSimples(){ return true; }   /* a linha do título some, mas CTRL+Z traz de volta */
 
 function alterarGridTabela(btn, dRows, dCols) {
   const grid = btn.closest('.tab-editor-box').querySelector('.excel-table-grid');
@@ -3120,13 +4067,26 @@ function blocosDaSecao(s,secIdx,num,ctx){
       table.className = 'doc-tabela';
       
       if(t.matrix && t.matrix.length > 0) {
+        const nCols = Math.max(...t.matrix.map(l=>l.length));
+        const linhaTitulo  = t.titulo ? 0 : -1;
+        const linhaCabec   = (t.cab!==false) ? (t.titulo?1:0) : -1;
         t.matrix.forEach((rowCells, rIdx) => {
           const tr = document.createElement('tr');
-          rowCells.forEach(cellVal => {
-            const cell = document.createElement(rIdx === 0 ? 'th' : 'td');
-            cell.innerHTML = formatarInline(trocar(cellVal || ''));
+          if(rIdx===linhaTitulo){
+            /* uma célula só, atravessando a tabela inteira */
+            const cell=document.createElement('th');
+            cell.colSpan=nCols;
+            cell.className='tab-titulo-geral';
+            cell.innerHTML=formatarInline(trocar(rowCells.join(' ').trim()));
             tr.appendChild(cell);
-          });
+          }else{
+            for(let c=0;c<nCols;c++){
+              const cell = document.createElement(rIdx===linhaCabec ? 'th' : 'td');
+              cell.innerHTML = formatarInline(trocar(rowCells[c] || ''));
+              tr.appendChild(cell);
+            }
+            if(t.zebra && rIdx>linhaCabec && ((rIdx-linhaCabec)%2===0)) tr.className='zebra';
+          }
           table.appendChild(tr);
         });
       }
@@ -4262,8 +5222,11 @@ async function polirTexto(ta, contexto){
   }
 
   const antes = ta.value;
-  const botao = ta.closest('.campo')?.querySelector('.btn-tool.ia');
+  /* precisa ser BUTTON: o seletor de modo também tem .btn-tool.ia e,
+     ao receber textContent, perderia as opções */
+  const botao = ta.closest('.campo')?.querySelector('button.btn-tool.ia');
   ta.dataset.polindo='1'; ta.classList.add('polindo'); ta.readOnly=true;
+  const rotuloBotao = botao ? botao.textContent : '';
   if(botao){ botao.disabled=true; botao.textContent='✦ polindo…'; }
 
   try{
@@ -4285,9 +5248,14 @@ async function polirTexto(ta, contexto){
     avisar(/sem-chave/.test(err.message) ? 'Conecte a chave do Gemini primeiro.'
           : 'A IA não respondeu ('+err.message+'). Seu texto foi mantido.');
   }finally{
-    ta.dataset.polindo=''; ta.classList.remove('polindo'); ta.readOnly=false;
-    if(botao){ botao.disabled=false; botao.textContent='✦ Polir com IA'; }
-    ta.focus();
+    /* devolve o campo e o botão ao estado normal, aconteça o que acontecer */
+    delete ta.dataset.polindo;
+    ta.classList.remove('polindo');
+    ta.readOnly=false;
+    if(botao){ botao.disabled=false; botao.textContent=rotuloBotao||'✦ Polir com IA'; }
+    /* os seletores de modo nunca devem ficar desabilitados */
+    document.querySelectorAll('.toolbar select.ia').forEach(s2=>{ s2.disabled=false; });
+    try{ ta.focus(); }catch(_){}
   }
 }
 
@@ -4571,14 +5539,16 @@ function trocar(txt){
     UF      : pega('ufcli')      || '[UF]',
     PLANTA  : pega('planta')     || pega('cidadecli') || '[planta]',
     REF     : pega('codigo')     || '[referência]',
-    REVISAO : pega('revisao')    || '0'
+    REVISAO : pega('revisao')    || '0',
+    DATA    : pega('data')       || '__/__/____'
   };
   return txt.replace(/\{\{(\w+)\}\}/g, (m,k)=> d[k]!==undefined ? d[k] : m);
 }
 const CAMPOS_DINAMICOS=[
   ['{{CLIENTE}}','nome do cliente'],['{{PROJETO}}','título do projeto'],
   ['{{CIDADE}}','cidade da unidade'],['{{UF}}','estado (UF)'],
-  ['{{PLANTA}}','planta / local'],['{{REF}}','referência'],['{{REVISAO}}','revisão']
+  ['{{PLANTA}}','planta / local'],['{{REF}}','referência'],['{{REVISAO}}','revisão'],
+  ['{{DATA}}','data do documento'],['{{ASSINATURA}}','✍ espaço para assinatura']
 ];
 
 function montarSelectFirmas(){
@@ -4837,12 +5807,17 @@ function fecharIrmaos(alvo){
   }
 }
 
-/* Recolhe tudo — usado na abertura do programa */
-function recolherTudo(){
-  document.querySelectorAll('main .card').forEach(c=>{
+/* Recolhe tudo — usado na abertura do programa.
+   Deixa aberto só o card de Dados do documento, que é por onde se começa. */
+function recolherTudo(deixarDados){
+  const cards=[...document.querySelectorAll('main .card')];
+  const dados=cards.find(c=>c.querySelector('#codigo'));
+  cards.forEach(c=>{
     if(c.classList.contains('recolhido')) return;
+    if(deixarDados!==false && c===dados) return;
     pintarResumo(c); c.classList.add('recolhido');
   });
+  if(deixarDados!==false && dados) dados.classList.remove('recolhido');
   document.querySelectorAll('#lista-sec .bloco-sec').forEach(b=>{
     if(b.classList.contains('recolhido')) return;
     pintarResumoSec(b); b.classList.add('recolhido');
@@ -5402,11 +6377,14 @@ function sincronizarDataExtenso(){
   if(nova) dext.value=nova;
 }
 function aplicarPadrao(){
-  PADRAO=document.getElementById('padrao').value==='proposta'?'proposta':'afd';
+  const escolha=document.getElementById('padrao').value;
+  PADRAO=(escolha==='proposta'||escolha==='checklist')?escolha:'afd';
   document.body.dataset.padrao=PADRAO;
   const prop=PADRAO==='proposta';
   document.getElementById('sub-padrao').textContent=
-    (prop?'Padrão Proposta Técnica':'Padrão AFD')+' · desenvolvido por Victor Reis — WAC Engenharia';
+    (PADRAO==='checklist'?'Padrão Checklist de Assistência Técnica'
+      :(prop?'Padrão Proposta Técnica':'Padrão AFD'))+
+    ' · desenvolvido por Victor Reis — WAC Engenharia';
   document.getElementById('lbl-codigo').textContent=prop?'Referência do projeto':'Código do projeto';
   document.getElementById('lbl-equip').textContent=prop?'Título do projeto':'Equipamento';
   document.getElementById('lbl-rev').textContent=prop?'Controle de revisões':'Gerenciamento de revisões';
@@ -5643,6 +6621,226 @@ function corpoIndiceProposta(itens,d){
     </table>`;
 }
 
+
+
+/* ==================================================================
+   FOTOS DOS ANEXOS EM TAMANHO ÚNICO
+   ------------------------------------------------------------------
+   Fotos de celular vêm em proporções diferentes e a grade fica
+   desalinhada. Aqui cada foto é redesenhada numa proporção fixa,
+   recortada pelo centro — o arquivo original não é tocado.
+   ================================================================== */
+const CK_FOTO_LARG = 900;   /* largura do quadro; a altura sai da proporção */
+
+function proporcaoFotoCk(){
+  const s=document.getElementById('ck_fotoprop');
+  const v=parseFloat(s && s.value);
+  return isNaN(v)?4/3:v;
+}
+function formatoFotoCk(){
+  const s=document.getElementById('ck_fotofmt');
+  return (s && s.value==='original') ? 'original' : 'uniforme';
+}
+
+function padronizarFoto(dataURL, prop){
+  return new Promise(resolve=>{
+    const img=new Image();
+    img.onload=()=>{
+      try{
+        const L=CK_FOTO_LARG, A=Math.round(L/prop);
+        const cv=document.createElement('canvas');
+        cv.width=L; cv.height=A;
+        const cx=cv.getContext('2d');
+        cx.fillStyle='#fff'; cx.fillRect(0,0,L,A);
+        /* recorte central: preenche o quadro sem distorcer */
+        const escala=Math.max(L/img.naturalWidth, A/img.naturalHeight);
+        const w=img.naturalWidth*escala, h=img.naturalHeight*escala;
+        cx.imageSmoothingEnabled=true; cx.imageSmoothingQuality='high';
+        cx.drawImage(img, (L-w)/2, (A-h)/2, w, h);
+        resolve(cv.toDataURL('image/jpeg', 0.86));
+      }catch(_){ resolve(dataURL); }
+    };
+    img.onerror=()=>resolve(dataURL);
+    img.src=dataURL;
+  });
+}
+
+/* Refaz todas as fotos já carregadas na proporção escolhida */
+async function repadronizarFotosCk(){
+  const fotos=[...document.querySelectorAll('#ck-grupos .ck-foto')];
+  if(!fotos.length){ agendarPrevia(); return; }
+  const prop=proporcaoFotoCk();
+  avisar('Ajustando '+fotos.length+' foto(s)…');
+  for(const f of fotos){
+    const orig=f.dataset.orig || f.dataset.img;
+    if(!orig) continue;
+    f.dataset.orig=orig;                       /* guarda o original */
+    const nova=await padronizarFoto(orig, prop);
+    f.dataset.img=nova;
+    const im=f.querySelector('img'); if(im) im.src=nova;
+  }
+  agendarPrevia();
+  avisar('Fotos padronizadas');
+}
+
+/* ==================================================================
+   RESUMO NUMÉRICO — usado na capa e no painel do editor
+   ================================================================== */
+function contarChecklist(ck){
+  let c=0,nc=0,na=0,vazio=0;
+  (ck.grupos||[]).forEach(g=>(g.itens||[]).forEach(i=>{
+    if(i.valor==='C') c++; else if(i.valor==='NC') nc++;
+    else if(i.valor==='NA') na++; else vazio++;
+  }));
+  return {c,nc,na,vazio,total:c+nc+na+vazio};
+}
+
+/* ================= PÁGINAS DO PADRÃO CHECKLIST ================= */
+const CK_END = 'Alameda São Caetano, 2302<br>Santa Maria, São Caetano do Sul<br>São Paulo – CEP 09560-500';
+const CK_CONT = '(11) 4222-2660<br>falcare@falcare.com.br<br><b>www.falcare.com.br</b>';
+
+function novaPaginaCk(d){
+  return elemento(`<div class="pagina ck">
+    <div class="pg-cab-ck">
+      <img src="${imagemDoc('logo')}" alt="Falcare">
+      <div class="dir">${escHtml(d.ck.capitulo)}<br><span class="rod-pag"></span></div>
+    </div>
+    <div class="pg-corpo"></div>
+    <div class="pg-rod-ck">
+      <div>${CK_END}</div>
+      <div class="meio">${CK_CONT}</div>
+      <div style="width:38px"></div>
+    </div></div>`);
+}
+
+function pgCapaCk(d){
+  const pg = novaPaginaCk(d);
+  const n = contarChecklist(d.ck);
+  const linhas=[['Cliente',d.cliente],['Local',d.ck.localinst||d.planta||d.cidadecli],
+    ['Equipamento',d.ck.equip],['FA',d.ck.fa],['Data da visita',d.data]]
+    .filter(([k,v])=>v && String(v).trim());
+
+  pg.querySelector('.pg-corpo').innerHTML =
+    `<div class="pg-capa-ck">
+      <div class="risco"></div>
+      <div class="tit">${escHtml(trocar(d.equip)||d.ck.capitulo||'CHECKLIST')}</div>
+      ${d.ck.revisao?`<div class="rev">${escHtml(d.ck.revisao)}</div>`:''}
+      <div class="risco"></div>
+      ${linhas.length?`<table class="painel">
+        <tr><td class="cab" colspan="2">DADOS DA VISITA</td></tr>
+        ${linhas.map(([k,v])=>`<tr><td class="rot">${escHtml(k)}</td><td>${escHtml(v)}</td></tr>`).join('')}
+      </table>`:''}
+      ${n.total?`<table class="placar">
+        <tr><td class="tit2" colspan="3">RESULTADO DA VERIFICAÇÃO</td></tr>
+        <tr><td class="rot">Conforme</td><td class="rot">Não conforme</td><td class="rot">Não aplicável</td></tr>
+        <tr><td class="num">${n.c}</td><td class="num">${n.nc}</td><td class="num">${n.na}</td></tr>
+      </table>`:''}
+    </div>`;
+  return pg;
+}
+
+/* o sumário ganhou página própria, como no PDF */
+function pgIndiceCk(d){
+  const pg = novaPaginaCk(d);
+  pg.querySelector('.pg-corpo').innerHTML =
+    '<h3 style="padding-top:0">Índice</h3>'+
+    '<div style="height:2px;background:#741012;margin:2px 0 14px"></div>'+
+    '<div id="ck-sumario"></div>';
+  return pg;
+}
+
+/* Um item de verificação */
+function ckItemHTML(it){
+  const cx = v => (it.valor===v ? '☒' : '☐');
+  return `<div class="ck-item"><span>${escHtml(it.nome)}</span>`+
+    `<span class="cx">${cx('C')} C</span>`+
+    `<span class="cx">${cx('NC')} NC</span>`+
+    `<span class="cx">${cx('NA')} NA</span></div>`;
+}
+function ckObsHTML(txt){
+  const linhas=(txt||'').split('\n').map(l=>l.trim()).filter(Boolean);
+  const corpo = linhas.length ? linhas.map(l=>'<div class="lin">'+formatarInline(l)+'</div>').join('')
+                              : '<div class="lin">&nbsp;</div><div class="lin">&nbsp;</div><div class="lin">&nbsp;</div>';
+  return '<div class="ck-obs"><div class="cab">Observações gerais:</div>'+corpo+'</div>';
+}
+function ckLegendaHTML(){
+  return '<table class="ck-leg"><tr><td class="tit" colspan="3">LEGENDA</td></tr>'+
+    '<tr><td>C = Conforme</td><td>NC = Não Conforme</td><td>NA = Não Aplicável</td></tr></table>';
+}
+function ckAnexosHTML(anexos){
+  if(!anexos || !anexos.length) return '';
+  let h='<table class="ck-anexos">';
+  for(let i=0;i<anexos.length;i+=2){
+    h+='<tr>';
+    for(let j=i;j<i+2;j++){
+      const a=anexos[j];
+      h+= a ? ('<td><div class="rot">'+String(j+1).padStart(2,'0')+' – Anexo '+(j+1)+'</div>'+
+               (a.img?'<img class="'+(formatoFotoCk()==='uniforme'?'uniforme':'')+'" src="'+a.img+'">':'')+
+               (a.leg?'<div class="leg">'+escHtml(a.leg)+'</div>':'')+'</td>')
+             : '<td></td>';
+    }
+    h+='</tr>';
+  }
+  return h+'</table>';
+}
+
+/* Monta os blocos do checklist, para a paginação tratar como qualquer outro */
+function blocosChecklist(d){
+  const blocos=[]; const sum=[];
+  let c1=0, c2=0;
+  const add=(html, cab)=>{
+    const div=document.createElement('div');
+    div.innerHTML=html;
+    blocos.push({no:div, cab:cab||null});
+  };
+  const titulo=(txt,nivel)=>{
+    if(nivel==='section'){ c1++; c2=0; } else c2++;
+    const num = nivel==='section' ? String(c1) : c1+'.'+c2;
+    sum.push({nivel, num, titulo:txt});
+    const tag = nivel==='section' ? 'h3' : 'h4';
+    add('<'+tag+'>'+num+'&ensp;'+escHtml(txt)+'</'+tag+'>', {nivel, num, titulo:txt});
+  };
+
+  /* 1 Dados da instalação */
+  titulo('Dados da instalação','section');
+  const dados=[['Empresa',d.cliente],['Local',d.ck.localinst||d.planta||d.cidadecli],
+    ['Data',d.data],['FA',d.ck.fa],['Descrição da FA',d.ck.fadesc],
+    ['Equipamento',d.ck.equip],['Data do comissionamento',d.ck.comiss]]
+    .filter(([k,v])=>v && String(v).trim());
+  if(dados.length) add(dados.map(([k,v])=>'<p>'+escHtml(k)+': '+escHtml(v)+'</p>').join(''));
+
+  titulo('Descrição geral','subsection');
+  const geral=[['Tipo de equipamento',d.ck.tipo],['Função',d.ck.funcao],
+    ['Local de instalação',d.ck.localinst]].filter(([k,v])=>v && String(v).trim());
+  if(geral.length) add(geral.map(([k,v])=>'<p>'+escHtml(k)+': '+escHtml(v)+'</p>').join(''));
+
+  /* 2 A revisão, com um subitem por grupo e outro para os anexos */
+  titulo(d.ck.revisao||'1ª revisão','section');
+  (d.ck.grupos||[]).forEach(g=>{
+    if(!g.nome && !g.itens.length) return;
+    titulo(g.nome||'Grupo','subsection');
+    if(g.itens.length) add(g.itens.map(ckItemHTML).join(''));
+    add(ckObsHTML(g.obs));
+    add(ckLegendaHTML());
+    if((g.anexos||[]).length){
+      titulo('Anexos','subsection');
+      add(ckAnexosHTML(g.anexos));
+    }
+  });
+
+  /* Conclusão */
+  titulo('Conclusão da revisão','subsection');
+  const conc=(d.ck.conclusao||'').trim();
+  add((conc?'<p>'+formatarInline(conc).replace(/\n/g,'<br>')+'</p>':'')+
+      (d.ck.dataconc?'<p style="text-align:right;margin-top:18px">Data: '+escHtml(d.ck.dataconc)+'</p>':'')+
+      '<div class="ck-assina">'+
+        '<div class="linha"></div><div class="rot">Assinatura do responsável pelo setor de manutenção</div>'+
+        '<div class="linha"></div><div class="rot">Assinatura do técnico responsável FALCARE</div>'+
+      '</div>');
+
+  return {blocos, sumario:sum};
+}
+
 /* ================= PAGINAÇÃO ================= */
 function novaPaginaConteudo(d){
   return elemento(`<div class="pagina">
@@ -5677,15 +6875,21 @@ function montarPrevia(){
   const cont=document.getElementById('paginas');
   desselecionar();
 
-  PADRAO = d.padrao==='proposta' ? 'proposta' : 'afd';
+  PADRAO = (d.padrao==='proposta') ? 'proposta' : (d.padrao==='checklist' ? 'checklist' : 'afd');
   const prop = PADRAO==='proposta';
+  const chk  = PADRAO==='checklist';
   medirAreaUtil(PADRAO);                 /* área real da folha, não um chute */
   PG.CORPO_W = AREA[PADRAO].w;
   PG.CORPO_H = Math.round(AREA[PADRAO].h * FATOR_FOLHA[PADRAO]);
-  const N_FIXAS = prop ? 3 : 4;   // capa+carta+índice  ×  capa+dados+revisões+sumário
+  const N_FIXAS = chk ? 2 : (prop ? 3 : 4);   // checklist: capa + índice
 
   let c1=0,c2=0,c3=0; const ctx={cap:1,figN:0};
-  const todos=[]; const sumItens=[];
+  let todos=[]; let sumItens=[];
+  if(chk){
+    const r = blocosChecklist(d);
+    todos = r.blocos;
+    sumItens = r.sumario.map(x=>Object.assign({}, x, {pg:0}));
+  } else
   d.secs.forEach((s,i)=>{
     let num;
     if(s.nivel==='section'){ c1++; c2=0; c3=0; ctx.cap=c1; ctx.figN=0; num=String(c1); }
@@ -5725,12 +6929,13 @@ function montarPrevia(){
   if(atual.nos.length) pagsConteudo.push(atual);
 
   const totalPags=N_FIXAS+Math.max(pagsConteudo.length,1);
-  const novaPag = prop ? novaPaginaProposta : novaPaginaConteudo;
+  const novaPag = chk ? novaPaginaCk : (prop ? novaPaginaProposta : novaPaginaConteudo);
 
   cont.innerHTML='';
-  cont.appendChild(prop ? pgCapaProposta(d) : pgCapa(d));
+  cont.appendChild(chk ? pgCapaCk(d) : (prop ? pgCapaProposta(d) : pgCapa(d)));
 
-  const fixas = prop
+  const fixas = chk ? [{html:null, ck:true}]
+    : prop
     ? [ {html:corpoCartaProposta(d), rod:''},
         {html:corpoIndiceProposta(sumItens,d), rod:'Índice'} ]
     : [ {html:corpoDados(d), rod:'Folha de dados'},
@@ -5738,6 +6943,12 @@ function montarPrevia(){
         {html:corpoSumario(sumItens), rod:'Conteúdo'} ];
 
   fixas.forEach((f,i)=>{
+    if(f.ck){                      /* índice do checklist tem página própria */
+      const pgi=pgIndiceCk(d);
+      pgi.querySelector('.rod-pag').textContent='Página 2/'+totalPags;
+      cont.appendChild(pgi);
+      return;
+    }
     const pg=novaPag(d);
     pg.querySelector('.pg-corpo').innerHTML=f.html;
     const rs=pg.querySelector('.rod-sec'); if(rs) rs.textContent=f.rod;
@@ -5748,7 +6959,9 @@ function montarPrevia(){
   if(pagsConteudo.length===0){
     const pg=novaPag(d);
     pg.querySelector('.pg-corpo').innerHTML='<p style="color:#8b857e;text-indent:0">Adicione capítulos na seção 6 — o documento é montado aqui em páginas A4, em tempo real.</p>';
-    pg.querySelector('.rod-pag').textContent=(prop?'Página ':'Pág. ')+(N_FIXAS+1)+' de '+totalPags;
+    pg.querySelector('.rod-pag').textContent = chk
+      ? ('Página '+(N_FIXAS+1)+'/'+totalPags)
+      : ((prop?'Página ':'Pág. ')+(N_FIXAS+1)+' de '+totalPags);
     cont.appendChild(pg);
   }
   pagsConteudo.forEach((p,i)=>{
@@ -5756,9 +6969,21 @@ function montarPrevia(){
     const corpo=pg.querySelector('.pg-corpo');
     p.nos.forEach(no=>corpo.appendChild(no));
     const rs=pg.querySelector('.rod-sec'); if(rs) rs.textContent=p.capitulo||'';
-    pg.querySelector('.rod-pag').textContent=(prop?'Página ':'Pág. ')+(N_FIXAS+1+i)+' de '+totalPags;
+    pg.querySelector('.rod-pag').textContent = chk
+      ? ('Página '+(N_FIXAS+1+i)+'/'+totalPags)
+      : ((prop?'Página ':'Pág. ')+(N_FIXAS+1+i)+' de '+totalPags);
     cont.appendChild(pg);
   });
+  if(chk){
+    const cap=cont.firstElementChild;
+    const rp=cap.querySelector('.rod-pag'); if(rp) rp.textContent='Página 1/'+totalPags;
+    /* o sumário agora fica na página 2, não na capa */
+    const alvo=cont.querySelector('#ck-sumario');
+    if(alvo) alvo.innerHTML=sumItens.map(it=>
+      '<div class="ind-item'+(it.nivel==='section'?'':' n2')+'">'+
+      '<span>'+it.num+'&ensp;'+escHtml(it.titulo)+'</span>'+
+      '<span class="ind-pontos"></span><span>'+it.pg+'</span></div>').join('');
+  }
   document.getElementById('info-pags').textContent=totalPags+' págs';
   aplicarZoom();
 
@@ -5831,7 +7056,9 @@ function coletar(){
     cidadecli:v('cidadecli'), ufcli:v('ufcli'),
     cnpjcli:v('cnpjcli'), iecli:v('iecli'),
     /* --- padrão Proposta Técnica --- */
-    padrao:document.getElementById('padrao').value==='proposta'?'proposta':'afd',
+    padrao:(function(){const v2=document.getElementById('padrao').value;
+      return (v2==='proposta'||v2==='checklist')?v2:'afd';})(),
+    ck:coletarChecklist(),
     logocli:LOGO_CLIENTE,
     p_sub:v('p_sub'), p_rc:v('p_rc'), p_titrod:v('p_titrod'),
     p_cidade:v('p_cidade'), p_dataext:v('p_dataext'),
@@ -5859,13 +7086,16 @@ function coletar(){
         top:f.dataset.top || ''
       })),
       tabs:[...b.querySelectorAll('.tab-editor-box')].map(tBox => {
-        const rows = tBox.querySelectorAll('.excel-table-grid tr');
-        const matrix = [...rows].map(tr => {
-          return [...tr.querySelectorAll('.cell-input')].map(input => input.value);
-        });
+        const rows = [...tBox.querySelectorAll('.excel-table-grid tr')]
+                       .filter(tr=>!tr.classList.contains('regua'));
+        const matrix = rows.map(tr => [...tr.querySelectorAll('.cell-input')].map(i => i.value))
+                           .filter(l => l.length);
         return {
           cap: tBox.querySelector('.t-cap').value.trim(),
           align: tBox.querySelector('.t-align').value,
+          titulo: tBox.querySelector('.t-titulo-linha').checked,
+          cab: tBox.querySelector('.t-cabecalho').checked,
+          zebra: tBox.querySelector('.t-zebra').checked,
           rows: matrix.length,
           cols: matrix.length > 0 ? matrix[0].length : 0,
           matrix: matrix
@@ -5881,6 +7111,9 @@ function coletar(){
 /* ================= GERAÇÃO LaTeX ================= */
 function corpoParaLatex(txt, figs, nomeFig, tabs){
   txt = trocar(txt);
+  /* a assinatura é um bloco, não texto: resolvida antes do escape */
+  const TEM_ASSINA = /\{\{ASSINATURA\}\}/.test(txt);
+  if(TEM_ASSINA) txt = txt.replace(/\{\{ASSINATURA\}\}/g, '\u0002');
   const usadas=new Set();
   const usadasTab=new Set();
   const linhas=(txt||'').replace(/\r/g,'').split('\n');
@@ -5918,17 +7151,29 @@ function corpoParaLatex(txt, figs, nomeFig, tabs){
     return validas.map(i => {
       const t = tabs[i];
       if(!t.matrix || t.matrix.length === 0) return '';
-      const colsCount = t.cols || t.matrix[0].length;
+      const colsCount = Math.max(...t.matrix.map(l=>l.length));
       const alignChar = t.align === 'left' ? 'l' : (t.align === 'right' ? 'r' : 'c');
       const colSpec = '|' + Array(colsCount).fill(alignChar).join('|') + '|';
-      
+      const linhaTitulo = t.titulo ? 0 : -1;
+      const linhaCabec  = (t.cab!==false) ? (t.titulo?1:0) : -1;
+
       let tableTex = `\\begin{table}[H]\n`;
       if(t.align === 'center') tableTex += `  \\centering\n`;
       tableTex += `  \\begin{tabular}{${colSpec}}\n  \\hline\n`;
-      
+
       t.matrix.forEach((rowCells, rIdx) => {
-        const escapedCells = rowCells.map(c => inline(c));
-        tableTex += '  ' + escapedCells.join(' & ') + ' \\\\\n  \\hline\n';
+        if(rIdx===linhaTitulo){
+          /* uma célula só, atravessando todas as colunas */
+          const txt = inline(rowCells.join(' ').trim());
+          tableTex += '  \\multicolumn{'+colsCount+'}{|c|}{\\textbf{'+txt+'}} \\\\\n  \\hline\n';
+          return;
+        }
+        const cels=[];
+        for(let c=0;c<colsCount;c++){
+          const v = inline(rowCells[c]||'');
+          cels.push(rIdx===linhaCabec ? '\\textbf{'+v+'}' : v);
+        }
+        tableTex += '  ' + cels.join(' & ') + ' \\\\\n  \\hline\n';
       });
       tableTex += `  \\end{tabular}\n`;
       if(t.cap) tableTex += `  \\caption{${esc(t.cap)}}\n`;
@@ -5982,7 +7227,9 @@ function corpoParaLatex(txt, figs, nomeFig, tabs){
   for(const i of sobrasTab){ out.push(''); out.push(blocoTabelaTex([i])); }
   quebrasFim.forEach(q=>{ out.push(''); out.push(q); });
 
-  return out.join('\n').replace(/\n{3,}/g,'\n\n').trim();
+  let saida = out.join('\n').replace(/\n{3,}/g,'\n\n').trim();
+  if(TEM_ASSINA) saida = saida.split('\u0002').join(assinaturaLatex());
+  return saida;
 }
 function extensao(dataURL){ return dataURL.startsWith('data:image/jpeg')?'jpg':'png'; }
 function nomeBase(){
@@ -6092,17 +7339,120 @@ function carregar(d){
   pintarImagensDoc(); pintarFundo();
   LOGO_CLIENTE=d.logocli||'';
   mostrarLogoCliente();
-  document.getElementById('padrao').value=(d.padrao==='proposta')?'proposta':'afd';
+  document.getElementById('padrao').value=
+    (d.padrao==='proposta'||d.padrao==='checklist')?d.padrao:'afd';
+  if(d.ck) carregarChecklist(d.ck);
   aplicarPadrao();
   agendarPrevia();
   capturar();
 }
 
 function gerarTex(d){
+  if(d.padrao==='checklist') return gerarTexChecklist(d);
   return d.padrao==='proposta' ? gerarTexProposta(d) : gerarTexAFD(d);
 }
 
+/* ---------- PADRÃO CHECKLIST DE ASSISTÊNCIA TÉCNICA ---------- */
+function gerarTexChecklist(d){
+  const arqs=[]; let n=0;
+  const ck=d.ck||{};
+  const cont=contarChecklist(ck);
+
+  const dado=(r,v)=> (v && String(v).trim()) ? '\\dadoinstalacao{'+esc(r)+'}{'+esc(v)+'}\n' : '';
+
+  let corpo='\\section{'+esc('Dados da instalação')+'}\n';
+  corpo+=dado('Empresa',d.cliente)+dado('Local',ck.localinst||d.planta||d.cidadecli)+
+         dado('Data',d.data)+dado('FA',ck.fa)+dado('Descrição da FA',ck.fadesc)+
+         dado('Equipamento',ck.equip)+dado('Data do comissionamento',ck.comiss);
+
+  corpo+='\n\\subsection{'+esc('Descrição geral')+'}\n';
+  corpo+=dado('Tipo de equipamento',ck.tipo)+dado('Função',ck.funcao)+
+         dado('Local de instalação',ck.localinst);
+
+  corpo+='\n\\section{'+esc(ck.revisao||'1ª revisão')+'}\n';
+
+  (ck.grupos||[]).forEach(g=>{
+    if(!g.nome && !(g.itens||[]).length) return;
+    corpo+='\n\\subsection{'+esc(g.nome||'Grupo')+'}\n';
+    (g.itens||[]).forEach(it=>{
+      corpo+='\\itemverifica{'+esc(it.nome)+'}{'+(it.valor||'-')+'}\n';
+    });
+    const linhas=(g.obs||'').split('\n').map(l=>l.trim()).filter(Boolean);
+    corpo+='\n\\begin{observacoes}\n';
+    (linhas.length?linhas:['','','']).forEach(l=>{ corpo+='\\obs{'+(l?escInline(l):'~')+'}\n'; });
+    corpo+='\\end{observacoes}\n\n\\legendack\n';
+
+    const anexos=(g.anexos||[]).filter(a=>a.img||a.leg);
+    if(anexos.length){
+      corpo+='\n\\subsection{Anexos}\n\\begin{anexos}\n';
+      for(let i=0;i<anexos.length;i+=2){
+        const par=[anexos[i], anexos[i+1]];
+        const cel=par.map((a,k)=>{
+          if(!a) return ['','',''];
+          let nome='';
+          if(a.img){ n++; nome='img/anexo_'+n+'.'+extensao(a.img); arqs.push({nome, data:a.img}); }
+          const rot=String(i+k+1).padStart(2,'0')+' -- Anexo '+(i+k+1);
+          return [esc(rot), nome, esc(a.leg||'')];
+        });
+        corpo+='\\anexopar{'+cel[0][0]+'}{'+cel[0][1]+'}{'+cel[0][2]+'}'+
+               '{'+cel[1][0]+'}{'+cel[1][1]+'}{'+cel[1][2]+'}\n';
+      }
+      corpo+='\\end{anexos}\n';
+    }
+  });
+  corpo+='\n\\subsection{'+esc('Conclusão da revisão')+'}\n';
+  corpo+='\\conclusaock{'+escInline(ck.conclusao||'')+'}{'+esc(ck.dataconc||'')+'}\n';
+
+  const ptLatex = fonteTamanho + 'pt';
+  const tex=`%==============================================================================
+% ${d.codigo} — Checklist de Assistência Técnica
+% Gerado pelo Gerador de Documentação — Victor Reis / WAC Engenharia
+% Requer: falcare_checklist.sty + img/logo_falcare.png
+%==============================================================================
+\\documentclass[${ptLatex},a4paper]{article}
+\\usepackage{falcare_checklist}
+
+\\CkCapitulo{${esc(ck.capitulo||'Checklist – Assistência Técnica')}}
+\\CkTitulo{${esc(trocar(d.equip)||ck.capitulo||'CHECKLIST')}}
+\\CkRevisaoNome{${esc(ck.revisao||'')}}
+\\CkCliente{${esc(d.cliente||'')}}
+\\CkLocal{${esc(ck.localinst||d.planta||d.cidadecli||'')}}
+\\CkEquipamento{${esc(ck.equip||'')}}
+\\CkFA{${esc(ck.fa||'')}}
+\\CkData{${esc(d.data||'')}}
+\\CkResumo{${cont.c}}{${cont.nc}}{${cont.na}}
+
+\\begin{document}
+\\capachecklist
+
+${corpo}
+\\end{document}
+`;
+  return {tex, arquivos:arqs};
+}
+
+/* escape para texto solto (mantém negrito e itálico) */
+function escInline(t){
+  return esc(t||'').replace(/\*\*(.*?)\*\*/g,'\\textbf{$1}')
+                   .replace(/\*(.*?)\*/g,'\\textit{$1}')
+                   .replace(/\n/g,'\\\\ ');
+}
+
 /* ---------- texto simples (carta) para LaTeX ---------- */
+/* bloco de assinatura no LaTeX */
+function assinaturaLatex(){
+  const v2=id=>{const e=document.getElementById(id); return e?e.value.trim():'';};
+  let nome=v2('p_assin'), cargo=v2('p_cargo');
+  if(!nome){
+    const p=document.querySelector('#lista-elaborado .p-nome');
+    const c=document.querySelector('#lista-elaborado .p-cargo');
+    nome=p?p.value.trim():''; cargo=c?c.value.trim():'';
+  }
+  return '\n\\vspace{1.2cm}\n\\begin{center}\n\\rule{0.58\\textwidth}{0.4pt}\\\\[3pt]\n'+
+         '\\textbf{'+esc(nome||'~')+'}'+(cargo?'\\\\[2pt]\n{\\small '+esc(cargo)+'}':'')+
+         '\n\\end{center}\n\\vspace{0.4cm}\n';
+}
+
 function textoSimplesParaLatex(txt){
   return trocar(txt||'').replace(/\r/g,'').split(/\n{2,}/)
     .map(b=>b.trim().replace(/\n+/g,' ')).filter(Boolean)
