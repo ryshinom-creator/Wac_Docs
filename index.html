@@ -1,4 +1,19 @@
 <!DOCTYPE html>
+<!--
+================================================================================
+  GERADOR DE DOCUMENTAÇÃO TÉCNICA — Falcare / WAC Engenharia
+  Desenvolvido por Victor Reis.
+
+  USO INTERNO E RESTRITO. Este arquivo e o conteúdo dele são de uso exclusivo
+  da Falcare Equipamentos Industriais. É vedada a cópia, a redistribuição, o
+  uso fora da empresa e a alteração sem autorização do autor.
+
+  NÃO EXISTEM SENHAS NESTE ARQUIVO. As senhas são definidas no primeiro uso de
+  cada computador e ficam guardadas apenas como resumo criptográfico (SHA-256)
+  no navegador local — não é possível recuperá-las a partir deste código.
+  A chave de IA também não é gravada aqui.
+================================================================================
+-->
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -787,6 +802,28 @@
   .pg-capa-ck .placar .rot{background:#D9D9D9;font-weight:700}
   .pg-capa-ck .placar .num{font-size:19px;font-weight:800}
 
+  /* dados da instalação em tabela, no lugar de texto corrido */
+  .ck-dados{width:100%;border-collapse:collapse;font-size:.97em;margin:4px 0 10px}
+  .ck-dados td{border:1px solid #444;padding:4px 8px;vertical-align:top}
+  .ck-dados .rot{background:#F2EFEA;font-weight:700;width:34%}
+
+  /* plano de ação das não conformidades */
+  .ck-plano{width:100%;border-collapse:collapse;font-size:.92em;margin:6px 0 12px}
+  .ck-plano th{background:#741012;color:#fff;padding:4px 6px;border:1px solid #444;font-size:.95em}
+  .ck-plano td{border:1px solid #444;padding:4px 6px;vertical-align:top}
+  .ck-plano .crit{text-align:center;font-weight:700;white-space:nowrap}
+  .ck-plano .alta{color:#B3261E} .ck-plano .media{color:#B26A00} .ck-plano .baixa{color:#4B6A2F}
+  .ck-sem-nc{border:1px solid #4B6A2F;background:#F1F7EC;color:#2F4A18;
+    border-radius:6px;padding:9px 12px;font-size:.97em}
+
+  /* editor: plano de ação */
+  .pl-linha{display:grid;grid-template-columns:1.1fr 110px 1.6fr 110px;gap:7px;align-items:center;margin-bottom:5px}
+  .pl-linha input,.pl-linha select{padding:5px 8px;border:1px solid var(--linha);
+    border-radius:4px;font:inherit;font-size:12.5px}
+  .pl-linha .item{background:#F7F5F2;font-weight:600}
+  .pl-cab{display:grid;grid-template-columns:1.1fr 110px 1.6fr 110px;gap:7px;
+    font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--grafite);margin-bottom:4px}
+
   /* fotos dos anexos: todas do mesmo tamanho quando padronizadas */
   .ck-anexos img.uniforme{width:100%;height:96px;object-fit:cover}
 
@@ -1020,6 +1057,11 @@
     <div class="rodape">
       Precisa de e-mail corporativo <b>e</b> da senha de acesso.<br>
       O acesso fica registrado neste computador.
+    </div>
+    <div class="rodape" style="margin-top:9px;border-top:1px solid var(--linha);padding-top:9px">
+      Esta verificação evita o uso indevido, mas <b>não protege</b> um arquivo aberto
+      no navegador. Para restringir de verdade ao domínio da empresa, o site precisa
+      estar atrás de um login corporativo (ver PUBLICAR.md).
     </div>
   </div>
 </div>
@@ -1441,8 +1483,26 @@ E-mail: falcare@falcare.com.br</textarea></div>
         <button class="btn btn-add" type="button" onclick="carregarGruposPadrao()">📋 carregar os 4 grupos padrão</button>
         <button class="btn btn-add" type="button" onclick="marcarTudoCk('C')">✔ marcar tudo como Conforme</button>
       </div>
+      <div class="acoes-add" style="margin-top:4px">
+        <select class="btn btn-add" id="ck_modelo" onchange="usarModeloCk()" style="min-width:220px">
+          <option value="">📁 modelos salvos…</option>
+        </select>
+        <button class="btn btn-add" type="button" onclick="salvarModeloCk()">💾 salvar estes grupos como modelo</button>
+        <button class="btn btn-add" type="button" onclick="excluirModeloCk()">excluir modelo</button>
+      </div>
 
-      <h2 style="margin-top:16px;cursor:default"><span>5.3 · Conclusão</span></h2>
+      <h2 style="margin-top:16px;cursor:default"><span>5.3 · Plano de ação</span></h2>
+      <div class="ck-resumo" style="background:#F1F7EC;border-color:#C6DDB4;color:#2F4A18">
+        Cada item marcado como <b>não conforme</b> vira uma linha aqui, com criticidade,
+        ação recomendada e prazo. É o que o cliente lê primeiro.
+      </div>
+      <div id="ck-plano"></div>
+      <div class="acoes-add">
+        <button class="btn btn-add" type="button" onclick="montarPlanoCk(true)">🔄 atualizar com as não conformidades</button>
+        <button class="btn btn-add" type="button" onclick="sugerirAcoesCk()">✦ sugerir ações com a IA</button>
+      </div>
+
+      <h2 style="margin-top:16px;cursor:default"><span>5.4 · Conclusão</span></h2>
       <div class="campo"><label for="ck_conclusao">Texto da conclusão
         <small>(o botão abaixo escreve com base no que você marcou)</small></label>
         <textarea id="ck_conclusao" rows="4" spellcheck="true" lang="pt-BR"></textarea></div>
@@ -1620,7 +1680,7 @@ E-mail: falcare@falcare.com.br</textarea></div>
           <input type="password" id="g-pass" placeholder="Cole a chave: AIzaSy…" autocomplete="off">
           <button class="g-olho" onclick="alternarOlho()" title="Mostrar/ocultar">👁</button>
         </div>
-        <label class="g-lembrar"><input type="checkbox" id="g-lembrar" checked>
+        <label class="g-lembrar"><input type="checkbox" id="g-lembrar">
           Lembrar neste computador</label>
         <div class="g-erro" id="g-erro"></div>
         <div id="g-diag" style="display:none;font-size:11.5px;line-height:1.7;background:#F1F3F4;
@@ -1693,7 +1753,7 @@ const AREA={afd:{w:604,h:850}, proposta:{w:620,h:884}, checklist:{w:618,h:911}};
 /* Ajuste fino medido comparando a prévia com o PDF compilado: o TeX
    hifeniza e reparte o texto de outro jeito, e acaba usando um pouco
    mais de folha do que o navegador. 1 = sem ajuste. */
-const FATOR_FOLHA={afd:1.00, proposta:0.97, checklist:0.97};
+const FATOR_FOLHA={afd:1.00, proposta:0.97, checklist:0.92};
 
 /* Mede a caixa de conteúdo de uma página real e guarda em AREA */
 function medirAreaUtil(padrao){
@@ -2121,7 +2181,10 @@ async function conectarGemini(){
     if(!gem.modelos.length){ gErro('Nenhum modelo Gemini disponível para esta chave.'); return; }
     gem.key=chave;
     gem.modelo=escolherModeloPadrao(gem.modelos);
+    /* só grava se a pessoa pedir explicitamente; do contrário a chave
+       vive apenas nesta sessão e não fica no computador */
     if(document.getElementById('g-lembrar').checked) gMemoria('gravar',chave);
+    else gMemoria('apagar');
     montarSeletorModelos();
     entrarNoChat(true);
   }catch(err){
@@ -2885,7 +2948,7 @@ function marcarCk(btn){
   const jaEstava = btn.classList.contains('on');
   [...grupo.children].forEach(b=>b.classList.remove('on'));
   if(!jaEstava) btn.classList.add('on');    /* clicar de novo desmarca */
-  agendarPrevia(); resumoCk(); capturarDepois(700);
+  agendarPrevia(); resumoCk(); montarPlanoCk(); capturarDepois(700);
 }
 
 function marcarTudoCk(valor){
@@ -2983,6 +3046,8 @@ function gerarConclusaoCk(){
         'Recomendamos o tratamento dos pontos acima antes da próxima revisão, prevista para '+periodo+'.';
   }
   if(obs.length) txt += '\n\nObservações registradas durante a visita: '+obs.join(' ');
+  const plano=coletarPlanoCk().filter(p=>p.acao);
+  if(plano.length) txt += '\n\nAs ações corretivas recomendadas constam do plano de ação desta revisão.';
 
   capturar();
   document.getElementById('ck_conclusao').value=txt;
@@ -2999,6 +3064,7 @@ function coletarChecklist(){
     tipo:v2('ck_tipo'), funcao:v2('ck_funcao'), localinst:v2('ck_localinst'),
     conclusao:(document.getElementById('ck_conclusao')||{}).value||'',
     fotofmt:formatoFotoCk(), fotoprop:(document.getElementById('ck_fotoprop')||{}).value||'1.3333',
+    plano:coletarPlanoCk(),
     dataconc:v2('ck_dataconc'), periodo:v2('ck_periodo'),
     grupos:[...document.querySelectorAll('#ck-grupos .ck-grupo')].map(g=>({
       nome:g.querySelector('.nome').value.trim(),
@@ -3022,7 +3088,17 @@ function carregarChecklist(ck){
    'conclusao','dataconc','periodo','fotofmt','fotoprop'].forEach(k=>set('ck_'+k, ck[k]));
   const cx=document.getElementById('ck-grupos');
   if(cx){ cx.innerHTML=''; (ck.grupos||[]).forEach(g=>addGrupoCk(g)); }
+  montarSelectModelos();
   resumoCk();
+  montarPlanoCk();
+  /* devolve as ações que estavam salvas */
+  (ck.plano||[]).forEach(p=>{
+    const l=[...document.querySelectorAll('#ck-plano .pl-linha')]
+      .find(x=>x.querySelector('.item').value===p.item);
+    if(l){ l.querySelector('.crit').value=p.crit||'Baixa';
+           l.querySelector('.acao').value=p.acao||'';
+           l.querySelector('.prazo').value=p.prazo||''; }
+  });
 }
 
 /* ==================================================================
@@ -4320,14 +4396,16 @@ async function hash(txt){
   return [...new Uint8Array(d)].map(x=>x.toString(16).padStart(2,'0')).join('');
 }
 
-/* Duas senhas diferentes:
-   - ACESSO ("wac2026")     -> todo mundo da equipe usa para abrir o programa
-   - ADMIN  ("falcare2026") -> só você, para destravar a configuração de página
-   Trocáveis em "alterar senha", dentro do card 1. */
-const SENHA_ADMIN_PADRAO  = '02652e0b58b77dc8727eb1a8a4931ec754e396800cac05a48783b2003772f404';
-const SENHA_ACESSO_PADRAO = '95c0657327438899b45f1e258be7614e72568c914b9dc06980bfbb20ae1a56c9';
-function hashDaSenha(){       return recuperar('wac_senha_cfg',    SENHA_ADMIN_PADRAO); }
-function hashDaSenhaAcesso(){ return recuperar('wac_senha_acesso', SENHA_ACESSO_PADRAO); }
+/* Duas senhas: uma de ACESSO (a equipe usa para abrir o programa) e uma de
+   ADMINISTRADOR (destrava a configuração de página).
+
+   NÃO existe senha padrão neste arquivo, de propósito: qualquer valor escrito
+   aqui seria lido por quem abrisse o código no navegador. Na primeira vez que
+   o programa é aberto num computador, ele pede que as senhas sejam definidas,
+   e guarda apenas o resumo criptográfico (SHA-256) delas. */
+function hashDaSenha(){       return recuperar('wac_senha_cfg',    ''); }
+function hashDaSenhaAcesso(){ return recuperar('wac_senha_acesso', ''); }
+function senhasDefinidas(){   return !!hashDaSenhaAcesso() && !!hashDaSenha(); }
 
 /* ---------------------- porta de entrada ---------------------- */
 function emailAutorizado(email){
@@ -4391,7 +4469,48 @@ async function entrarNoApp(){
   if(u) u.textContent = email;
 }
 
+/* Primeira vez neste computador: define as senhas antes de qualquer coisa */
+function primeiroUso(){
+  const f=document.createElement('div');
+  f.className='dlg-fundo';
+  f.style.zIndex='100000';
+  f.innerHTML=
+    '<div class="dlg-cx" style="max-width:470px"><h4>Definir as senhas</h4>'+
+    '<p>Este computador ainda não tem senhas configuradas. Defina-as agora — elas '+
+    'ficam guardadas apenas como resumo criptográfico, nunca em texto.</p>'+
+    '<label style="display:block;font-size:12.5px;font-weight:600;margin:12px 0 3px">'+
+      'Senha de <b>acesso</b> <small style="font-weight:400;color:#9A8F86">— a equipe usa para abrir</small></label>'+
+    '<input type="password" id="pu-acesso" autocomplete="new-password" '+
+      'style="width:100%;padding:9px 11px;border:1px solid var(--linha);border-radius:6px;font:inherit">'+
+    '<label style="display:block;font-size:12.5px;font-weight:600;margin:12px 0 3px">'+
+      'Senha de <b>administrador</b> <small style="font-weight:400;color:#9A8F86">— só você</small></label>'+
+    '<input type="password" id="pu-admin" autocomplete="new-password" '+
+      'style="width:100%;padding:9px 11px;border:1px solid var(--linha);border-radius:6px;font:inherit">'+
+    '<div id="pu-erro" style="color:#A33;font-size:12.5px;min-height:18px;margin-top:8px"></div>'+
+    '<div class="dlg-acoes"><button class="btn btn-primario" data-r="1">Definir</button></div></div>';
+  document.body.appendChild(f);
+  setTimeout(()=>document.getElementById('pu-acesso').focus(),100);
+
+  const tentar=async()=>{
+    const a=document.getElementById('pu-acesso').value;
+    const b=document.getElementById('pu-admin').value;
+    const erro=document.getElementById('pu-erro');
+    if(a.length<6 || b.length<6){ erro.textContent='Cada senha precisa de pelo menos 6 caracteres.'; return; }
+    if(a===b){ erro.textContent='Use senhas diferentes para acesso e administração.'; return; }
+    guardar('wac_senha_acesso', await hash(a));
+    guardar('wac_senha_cfg',    await hash(b));
+    f.remove();
+    abrirPorta();
+    avisar('Senhas definidas neste computador');
+  };
+  f.addEventListener('click',e=>{ if(e.target.dataset.r==='1') tentar(); });
+  f.addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); tentar(); } });
+}
+
 function abrirPorta(){
+  const logo0 = document.getElementById('porta-logo');
+  if(logo0) logo0.src = imagemDoc('logo');
+  if(!senhasDefinidas()){ primeiroUso(); return; }
   const salvo = recuperar('wac_usuario', null);
   const logo = document.getElementById('porta-logo');
   if(logo) logo.src = imagemDoc('logo');
@@ -6695,6 +6814,216 @@ function contarChecklist(ck){
   return {c,nc,na,vazio,total:c+nc+na+vazio};
 }
 
+
+/* ==================================================================
+   DADOS DA INSTALAÇÃO EM TABELA
+   ------------------------------------------------------------------
+   Em texto corrido os dados se perdem no meio da página. Numa tabela
+   com rótulo destacado, quem folheia acha na hora.
+   ================================================================== */
+function ckTabelaDados(pares){
+  const linhas=pares.filter(([k,v])=>v && String(v).trim());
+  if(!linhas.length) return '';
+  return '<table class="ck-dados">'+
+    linhas.map(([k,v])=>'<tr><td class="rot">'+escHtml(k)+'</td><td>'+escHtml(v)+'</td></tr>').join('')+
+    '</table>';
+}
+
+/* ==================================================================
+   PLANO DE AÇÃO
+   ------------------------------------------------------------------
+   Um checklist diz o que está errado. Um plano de ação diz o que
+   fazer, quando e com que urgência — é o que transforma a visita em
+   trabalho contratado.
+   ================================================================== */
+const CRITICIDADES=['Alta','Média','Baixa'];
+
+/* Palavras que costumam indicar risco maior, para sugerir a criticidade */
+const PISTAS_ALTA=['segurança','emergência','elétric','vazamento','trinca','fissura',
+  'estrutura','freio','parada','curto','aterramento','pressão','sobrecarga'];
+const PISTAS_MEDIA=['desgaste','folga','ruído','vibração','alinhamento','nivelamento',
+  'corrente','correia','rolamento','lubrific','torque'];
+
+function criticidadeSugerida(txt){
+  const t=(txt||'').toLowerCase();
+  if(PISTAS_ALTA.some(p=>t.includes(p)))  return 'Alta';
+  if(PISTAS_MEDIA.some(p=>t.includes(p))) return 'Média';
+  return 'Baixa';
+}
+
+function montarPlanoCk(avisando){
+  const cx=document.getElementById('ck-plano');
+  if(!cx) return;
+  const anteriores={};
+  cx.querySelectorAll('.pl-linha').forEach(l=>{
+    anteriores[l.dataset.chave]={
+      crit:l.querySelector('.crit').value,
+      acao:l.querySelector('.acao').value,
+      prazo:l.querySelector('.prazo').value};
+  });
+
+  const d=coletarChecklist();
+  const ncs=[];
+  (d.grupos||[]).forEach(g=>(g.itens||[]).forEach(i=>{
+    if(i.valor==='NC') ncs.push({grupo:g.nome, item:i.nome});
+  }));
+
+  if(!ncs.length){
+    cx.innerHTML='<div class="ck-sem-nc">Nenhuma não conformidade — nada a planejar. '+
+      'Marque um item como <b>NC</b> e ele aparece aqui.</div>';
+    agendarPrevia();
+    if(avisando) avisar('Nenhuma não conformidade encontrada');
+    return;
+  }
+
+  cx.innerHTML='<div class="pl-cab"><span>Item</span><span>Criticidade</span>'+
+    '<span>Ação recomendada</span><span>Prazo</span></div>'+
+    ncs.map(n=>{
+      const ch=n.grupo+'|'+n.item;
+      const a=anteriores[ch]||{};
+      return '<div class="pl-linha" data-chave="'+escAttr(ch)+'">'+
+        '<input type="text" class="item" value="'+escAttr(n.grupo+' → '+n.item)+'" readonly>'+
+        '<select class="crit" onchange="agendarPrevia()">'+
+          CRITICIDADES.map(c=>'<option'+((a.crit||criticidadeSugerida(n.item))===c?' selected':'')+
+            '>'+c+'</option>').join('')+
+        '</select>'+
+        '<input type="text" class="acao" value="'+escAttr(a.acao||'')+
+          '" placeholder="o que fazer" oninput="agendarPrevia()">'+
+        '<input type="text" class="prazo" value="'+escAttr(a.prazo||'')+
+          '" placeholder="prazo" oninput="agendarPrevia()">'+
+      '</div>';
+    }).join('');
+  agendarPrevia();
+  if(avisando) avisar(ncs.length+' não conformidade(s) no plano de ação');
+}
+
+function coletarPlanoCk(){
+  return [...document.querySelectorAll('#ck-plano .pl-linha')].map(l=>({
+    item:l.querySelector('.item').value,
+    crit:l.querySelector('.crit').value,
+    acao:l.querySelector('.acao').value.trim(),
+    prazo:l.querySelector('.prazo').value.trim()
+  }));
+}
+
+/* A IA sugere a ação corretiva de cada não conformidade */
+async function sugerirAcoesCk(){
+  const linhas=[...document.querySelectorAll('#ck-plano .pl-linha')];
+  if(!linhas.length){ avisar('Monte o plano primeiro'); return; }
+  if(!gem.key){
+    abrirGemini(); modoGemini('app');
+    informar('Falta conectar a IA','As sugestões são feitas pelo Gemini. Conecte a chave na aba "No app".');
+    return;
+  }
+  const d=coletarChecklist();
+  const pend=linhas.filter(l=>!l.querySelector('.acao').value.trim());
+  if(!pend.length){ avisar('Todas as ações já estão preenchidas'); return; }
+
+  avisar('Pedindo sugestões para '+pend.length+' item(ns)…');
+  const lista=pend.map((l,i)=>(i+1)+'. '+l.querySelector('.item').value).join('\n');
+  const prompt=
+    'Equipamento: '+(d.equip||d.tipo||'equipamento industrial')+'.\n'+
+    'Função: '+(d.funcao||'-')+'.\n\n'+
+    'Estas não conformidades foram encontradas numa inspeção de manutenção:\n'+lista+'\n\n'+
+    'Para CADA uma, escreva a ação corretiva recomendada, em uma frase curta, no imperativo '+
+    '("Realizar limpeza...", "Substituir...", "Reapertar..."). Seja concreto e executável por '+
+    'uma equipe de manutenção industrial. NÃO invente causas que não estejam no item.\n\n'+
+    'Responda SOMENTE com uma linha por item, no formato:\n1. ação\n2. ação';
+
+  try{
+    const bruto=await pedirAoGemini(prompt);
+    const respostas=limparRespostaIA(bruto).split('\n')
+      .map(l=>l.replace(/^\s*\d+[.)]\s*/,'').trim()).filter(Boolean);
+    capturar();
+    pend.forEach((l,i)=>{ if(respostas[i]) l.querySelector('.acao').value=respostas[i]; });
+    agendarPrevia(); capturar();
+    avisar(Math.min(respostas.length,pend.length)+' ação(ões) sugerida(s) — revise antes de enviar');
+  }catch(err){
+    avisar('A IA não respondeu ('+(err.message||'erro')+')');
+  }
+}
+
+/* ==================================================================
+   MODELOS DE CHECKLIST
+   ------------------------------------------------------------------
+   Transportador, cabine e bomba têm listas diferentes. Cada uma pode
+   ser salva e reaproveitada nas próximas visitas.
+   ================================================================== */
+function modelosCk(){ return recuperar('wac_modelos_ck', {}) || {}; }
+
+function montarSelectModelos(){
+  const s=document.getElementById('ck_modelo');
+  if(!s) return;
+  const m=modelosCk();
+  const nomes=Object.keys(m).sort();
+  s.innerHTML='<option value="">📁 modelos salvos…</option>'+
+    nomes.map(n=>'<option value="'+escAttr(n)+'">'+escHtml(n)+'</option>').join('');
+}
+
+async function salvarModeloCk(){
+  const grupos=coletarChecklist().grupos.filter(g=>g.nome || g.itens.length);
+  if(!grupos.length){ informar('Nada para salvar','Monte os grupos antes de salvar como modelo.'); return; }
+  const nome=await pedirTexto('Salvar modelo',
+    'Dê um nome a este conjunto de verificações — por exemplo, o tipo de equipamento.',
+    'ex.: Transportador aéreo');
+  if(!nome) return;
+  const m=modelosCk();
+  /* guarda só a estrutura: nomes dos grupos e itens, sem as marcações */
+  m[nome]=grupos.map(g=>({nome:g.nome, itens:g.itens.map(i=>({nome:i.nome, valor:''}))}));
+  guardar('wac_modelos_ck', m);
+  montarSelectModelos();
+  document.getElementById('ck_modelo').value=nome;
+  avisar('Modelo "'+nome+'" salvo com '+grupos.reduce((s,g)=>s+g.itens.length,0)+' itens');
+}
+
+function usarModeloCk(){
+  const s=document.getElementById('ck_modelo');
+  const m=modelosCk()[s.value];
+  if(!m) return;
+  capturar();
+  const cx=document.getElementById('ck-grupos');
+  cx.innerHTML='';
+  m.forEach(g=>addGrupoCk(JSON.parse(JSON.stringify(g))));
+  atualizarPrevia(); resumoCk(); montarPlanoCk(); capturar();
+  avisar('Modelo "'+s.value+'" carregado — marque os itens');
+}
+
+async function excluirModeloCk(){
+  const s=document.getElementById('ck_modelo');
+  if(!s.value){ informar('Escolha o modelo','Selecione na lista o modelo que quer excluir.'); return; }
+  const ok=await perguntar('Excluir modelo','Excluir o modelo "'+s.value+'"?','Excluir');
+  if(!ok) return;
+  const m=modelosCk(); delete m[s.value];
+  guardar('wac_modelos_ck', m);
+  montarSelectModelos();
+  avisar('Modelo excluído');
+}
+
+/* Caixa simples para pedir um texto */
+function pedirTexto(titulo, texto, exemplo){
+  return new Promise(resolve=>{
+    const f=document.createElement('div');
+    f.className='dlg-fundo';
+    f.innerHTML='<div class="dlg-cx"><h4>'+escHtml(titulo)+'</h4><p>'+escHtml(texto)+'</p>'+
+      '<input type="text" id="cx-txt" placeholder="'+escAttr(exemplo||'')+'" '+
+      'style="width:100%;padding:10px 12px;border:1px solid var(--linha);border-radius:6px;'+
+      'font:inherit;font-size:14px;margin:12px 0 4px">'+
+      '<div class="dlg-acoes"><button class="btn" data-r="0">Cancelar</button>'+
+      '<button class="btn btn-primario" data-r="1">Salvar</button></div></div>';
+    document.body.appendChild(f);
+    const c=f.querySelector('#cx-txt');
+    setTimeout(()=>c.focus(),80);
+    const fim=v=>{ f.remove(); resolve(v); };
+    c.addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); fim(c.value.trim()||null); }});
+    f.addEventListener('click',e=>{
+      if(e.target===f) return fim(null);
+      const r=e.target.dataset.r;
+      if(r==='0') fim(null);
+      if(r==='1') fim(c.value.trim()||null);
+    });
+  });
+}
+
 /* ================= PÁGINAS DO PADRÃO CHECKLIST ================= */
 const CK_END = 'Alameda São Caetano, 2302<br>Santa Maria, São Caetano do Sul<br>São Paulo – CEP 09560-500';
 const CK_CONT = '(11) 4222-2660<br>falcare@falcare.com.br<br><b>www.falcare.com.br</b>';
@@ -6803,16 +7132,15 @@ function blocosChecklist(d){
 
   /* 1 Dados da instalação */
   titulo('Dados da instalação','section');
-  const dados=[['Empresa',d.cliente],['Local',d.ck.localinst||d.planta||d.cidadecli],
+  const tab=ckTabelaDados([['Empresa',d.cliente],['Local',d.ck.localinst||d.planta||d.cidadecli],
     ['Data',d.data],['FA',d.ck.fa],['Descrição da FA',d.ck.fadesc],
-    ['Equipamento',d.ck.equip],['Data do comissionamento',d.ck.comiss]]
-    .filter(([k,v])=>v && String(v).trim());
-  if(dados.length) add(dados.map(([k,v])=>'<p>'+escHtml(k)+': '+escHtml(v)+'</p>').join(''));
+    ['Equipamento',d.ck.equip],['Data do comissionamento',d.ck.comiss]]);
+  if(tab) add(tab);
 
   titulo('Descrição geral','subsection');
-  const geral=[['Tipo de equipamento',d.ck.tipo],['Função',d.ck.funcao],
-    ['Local de instalação',d.ck.localinst]].filter(([k,v])=>v && String(v).trim());
-  if(geral.length) add(geral.map(([k,v])=>'<p>'+escHtml(k)+': '+escHtml(v)+'</p>').join(''));
+  const tab2=ckTabelaDados([['Tipo de equipamento',d.ck.tipo],['Função',d.ck.funcao],
+    ['Local de instalação',d.ck.localinst]]);
+  if(tab2) add(tab2);
 
   /* 2 A revisão, com um subitem por grupo e outro para os anexos */
   titulo(d.ck.revisao||'1ª revisão','section');
@@ -6827,6 +7155,18 @@ function blocosChecklist(d){
       add(ckAnexosHTML(g.anexos));
     }
   });
+
+  /* Plano de ação — só aparece quando há não conformidade */
+  const plano=(d.ck.plano||[]).filter(p=>p.item);
+  if(plano.length){
+    titulo('Plano de ação','subsection');
+    add('<table class="ck-plano"><tr><th>Não conformidade</th><th>Criticidade</th>'+
+        '<th>Ação recomendada</th><th>Prazo</th></tr>'+
+        plano.map(p=>'<tr><td>'+escHtml(p.item)+'</td>'+
+          '<td class="crit '+(p.crit||'').toLowerCase().replace('é','e')+'">'+escHtml(p.crit||'')+'</td>'+
+          '<td>'+escHtml(p.acao||'—')+'</td><td>'+escHtml(p.prazo||'—')+'</td></tr>').join('')+
+        '</table>');
+  }
 
   /* Conclusão */
   titulo('Conclusão da revisão','subsection');
@@ -7358,16 +7698,20 @@ function gerarTexChecklist(d){
   const ck=d.ck||{};
   const cont=contarChecklist(ck);
 
-  const dado=(r,v)=> (v && String(v).trim()) ? '\\dadoinstalacao{'+esc(r)+'}{'+esc(v)+'}\n' : '';
+  const dado=(r,v)=> (v && String(v).trim()) ? '\\dado{'+esc(r)+'}{'+esc(v)+'}\n' : '';
+  const bloco=(pares)=>{
+    const linhas=pares.map(([r,v])=>dado(r,v)).filter(Boolean);
+    return linhas.length ? '\\begin{dadosinst}\n'+linhas.join('')+'\\end{dadosinst}\n' : '';
+  };
 
   let corpo='\\section{'+esc('Dados da instalação')+'}\n';
-  corpo+=dado('Empresa',d.cliente)+dado('Local',ck.localinst||d.planta||d.cidadecli)+
-         dado('Data',d.data)+dado('FA',ck.fa)+dado('Descrição da FA',ck.fadesc)+
-         dado('Equipamento',ck.equip)+dado('Data do comissionamento',ck.comiss);
+  corpo+=bloco([['Empresa',d.cliente],['Local',ck.localinst||d.planta||d.cidadecli],
+    ['Data',d.data],['FA',ck.fa],['Descrição da FA',ck.fadesc],
+    ['Equipamento',ck.equip],['Data do comissionamento',ck.comiss]]);
 
   corpo+='\n\\subsection{'+esc('Descrição geral')+'}\n';
-  corpo+=dado('Tipo de equipamento',ck.tipo)+dado('Função',ck.funcao)+
-         dado('Local de instalação',ck.localinst);
+  corpo+=bloco([['Tipo de equipamento',ck.tipo],['Função',ck.funcao],
+    ['Local de instalação',ck.localinst]]);
 
   corpo+='\n\\section{'+esc(ck.revisao||'1ª revisão')+'}\n';
 
@@ -7400,6 +7744,16 @@ function gerarTexChecklist(d){
       corpo+='\\end{anexos}\n';
     }
   });
+  const plano=(ck.plano||[]).filter(p=>p.item);
+  if(plano.length){
+    corpo+='\n\\subsection{'+esc('Plano de ação')+'}\n\\begin{planoacao}\n';
+    plano.forEach(p=>{
+      corpo+='\\acaonc{'+esc(p.item)+'}{'+esc(p.crit||'')+'}{'+
+             esc(p.acao||'—')+'}{'+esc(p.prazo||'—')+'}\n';
+    });
+    corpo+='\\end{planoacao}\n';
+  }
+
   corpo+='\n\\subsection{'+esc('Conclusão da revisão')+'}\n';
   corpo+='\\conclusaock{'+escInline(ck.conclusao||'')+'}{'+esc(ck.dataconc||'')+'}\n';
 
