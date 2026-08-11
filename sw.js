@@ -1,7 +1,7 @@
 /* Service worker — WAC Docs (Victor Reis, WAC Engenharia)
    Estratégia: o index.html vem sempre da rede quando há internet
    (= atualização automática para todos) e do cache quando offline. */
-const CACHE='falcare-docs-v2';
+const CACHE='wac-docs-v1';
 self.addEventListener('install',e=>{ self.skipWaiting(); });
 self.addEventListener('activate',e=>{
   e.waitUntil(
